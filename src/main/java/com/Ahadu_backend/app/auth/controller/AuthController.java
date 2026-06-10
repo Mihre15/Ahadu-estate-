@@ -3,6 +3,8 @@ package com.Ahadu_backend.app.auth.controller;
 import com.Ahadu_backend.app.auth.dto.AuthResponseDto;
 import com.Ahadu_backend.app.auth.dto.LoginRequestDto;
 import com.Ahadu_backend.app.auth.dto.RegisterRequestDto;
+import com.Ahadu_backend.app.auth.service.AuthService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,16 +21,14 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponseDto> register(
-            @RequestBody RegisterRequestDto dto
-    ) {
+            @RequestBody RegisterRequestDto dto) {
         AuthResponseDto response = authService.register(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDto> login(
-            @RequestBody LoginRequestDto dto
-    ) {
+            @RequestBody LoginRequestDto dto) {
         AuthResponseDto response = authService.login(dto);
         return ResponseEntity.ok(response);
     }

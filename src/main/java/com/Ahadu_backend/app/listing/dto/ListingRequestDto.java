@@ -15,4 +15,5 @@ public class ListingRequestDto {
     private Integer bathrooms;
     private Double area;
     private Long agentId;
+    private String image;
 }

@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class AuthResponseDto {
-    private Long userId;
+    // private Long userId;
+    private String message;
 
     private String email;
 
     private Role role;
 
-    private String message;
 }
