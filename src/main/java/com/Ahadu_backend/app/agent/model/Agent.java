@@ -22,7 +22,6 @@ public class Agent {
 
     @Column(nullable = false, unique = true)
 
-
     private String phone;
 
     private String agencyName;

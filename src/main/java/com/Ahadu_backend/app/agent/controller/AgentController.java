@@ -18,8 +18,7 @@ public class AgentController {
 
     @PostMapping
     public ResponseEntity<AgentResponseDto> createAgent(
-            @RequestBody AgentRequestDto dto
-    ) {
+            @RequestBody AgentRequestDto dto) {
         AgentResponseDto createdAgent = agentService.createAgent(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAgent);
     }
@@ -31,23 +30,20 @@ public class AgentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AgentResponseDto> getAgentById(
-            @PathVariable Long id
-    ) {
+            @PathVariable Long id) {
         return ResponseEntity.ok(agentService.getAgentById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<AgentResponseDto> updateAgent(
             @PathVariable Long id,
-            @RequestBody AgentRequestDto dto
-    ) {
+            @RequestBody AgentRequestDto dto) {
         return ResponseEntity.ok(agentService.updateAgent(id, dto));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAgent(
-            @PathVariable Long id
-    ) {
+            @PathVariable Long id) {
         agentService.deleteAgent(id);
         return ResponseEntity.noContent().build();
     }
