@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Ahadu Real Estate | Find Your Dream Home</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#00201d",
+                        "tertiary": "#1e1200",
+                        "surface-container": "#f0edef",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#271902",
+                        "surface-container-high": "#eae7e9",
+                        "primary": "#091426",
+                        "primary-fixed": "#d8e3fb",
+                        "secondary-container": "#86f2e4",
+                        "surface-container-highest": "#e4e2e3",
+                        "surface-bright": "#fbf8fa",
+                        "surface-variant": "#e4e2e3",
+                        "on-background": "#1b1b1d",
+                        "tertiary-fixed-dim": "#ddc39d",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#006f66",
+                        "on-secondary-fixed-variant": "#005049",
+                        "outline": "#75777d",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#89f5e7",
+                        "on-primary-fixed": "#111c2d",
+                        "inverse-primary": "#bcc7de",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9db",
+                        "tertiary-fixed": "#fadfb8",
+                        "on-tertiary-container": "#a38c6a",
+                        "surface": "#fbf8fa",
+                        "on-primary-fixed-variant": "#3c475a",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-surface-variant": "#45474c",
+                        "inverse-on-surface": "#f3f0f2",
+                        "secondary": "#006a61",
+                        "surface-tint": "#545f73",
+                        "tertiary-container": "#35260c",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1b1d",
+                        "background": "#fbf8fa",
+                        "primary-fixed-dim": "#bcc7de",
+                        "surface-container-low": "#f5f3f4",
+                        "outline-variant": "#c5c6cd",
+                        "inverse-surface": "#303032",
+                        "on-primary-container": "#8590a6",
+                        "primary-container": "#1e293b",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#564427"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "section-gap": "80px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "headline-sm": ["Montserrat"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface/80 backdrop-blur-md font-body-md text-body-md docked full-width top-0 sticky shadow-sm z-50">
+    <nav class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+        <div class="flex items-center gap-8">
+            <a class="font-headline-md text-headline-md font-bold text-primary" th:href="@{/}">Ahadu Real Estate</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a class="text-secondary font-bold border-b-2 border-secondary hover:text-secondary transition-colors duration-200 active:scale-95 transition-transform" th:href="@{/}">Home</a>
+                <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 active:scale-95 transition-transform" th:href="@{/listings}">Listings</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <a class="hidden md:block text-on-surface-variant hover:text-secondary transition-colors duration-200 font-label-md" th:href="@{/login}">Login</a>
+            <a class="bg-secondary text-on-primary px-6 py-2.5 rounded-2xl font-label-md font-bold hover:bg-on-secondary-container transition-all active:scale-95" th:href="@{/register}">Register</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <!-- Hero Section -->
+    <section class="relative min-h-[819px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-primary/40 z-10"></div>
+            <img class="w-full h-full object-cover" data-alt="A luxurious modern villa with expansive glass walls and a pristine infinity pool, captured during the golden hour. The architecture is sharp and contemporary, reflecting a premium real estate aesthetic with deep navy shadows and warm teal highlights from the pool lights. The atmosphere is sophisticated, stable, and incredibly high-end, targeting wealthy investors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW2BeNdQ_vMY-MR8ITcwRfHQwnBd0ThJOEnNpS6ULi5Cy2465uRBaBM0eP1Myj-3sv--_6lxDnm6U4gDcgdRivV9hRcv358UJqIZGb7YIAt8stYdclUk0zFFBCE1FsGefbY_g_hh3FjLz3BLrJiXaMCpNLoiiGnt6vBnwZA9GISV32Ev82YbXib4JZCOH12jnCHcJRKv20VihGXnvyrhCJbKQHQ_oHnBvN6yGKxVRHPC2M-H1ydT5I6Bt0WisB0_6cF0h7lwvGUnQ"/>
+        </div>
+        <div class="relative z-20 text-center px-margin-mobile max-w-4xl mx-auto">
+            <h1 class="text-on-primary font-display-lg-mobile md:text-display-lg mb-6 leading-tight">Find Your Dream Home</h1>
+            <p class="text-on-primary/90 font-body-lg mb-10 max-w-2xl mx-auto">Discover a curated selection of premium properties tailored for investors and high-end buyers. Precision, clarity, and architectural excellence in every listing.</p>
+            <!-- Search Bar -->
+            <div class="bg-surface p-2 rounded-2xl shadow-xl flex flex-col md:flex-row gap-2 max-w-3xl mx-auto">
+                <div class="flex-1 flex items-center px-4 py-2 gap-3">
+                    <span class="material-symbols-outlined text-outline">search</span>
+                    <input class="w-full border-none focus:ring-0 bg-transparent text-on-surface placeholder:text-outline-variant font-body-md" placeholder="Location, Neighborhood, or City" type="text"/>
+                </div>
+                <div class="hidden md:block w-[1px] bg-outline-variant h-10 self-center"></div>
+                <div class="flex-1 flex items-center px-4 py-2 gap-3">
+                    <span class="material-symbols-outlined text-outline">home_work</span>
+                    <select class="w-full border-none focus:ring-0 bg-transparent text-on-surface font-body-md">
+                        <option>Property Type</option>
+                        <option>Villa</option>
+                        <option>Apartment</option>
+                        <option>Office</option>
+                    </select>
+                </div>
+                <button class="bg-secondary text-on-primary px-8 py-4 rounded-xl font-bold hover:bg-on-secondary-container transition-all active:scale-95 flex items-center justify-center gap-2">
+                    Search Now
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Listings Section -->
+    <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <span class="text-secondary font-bold tracking-wider font-label-sm uppercase">Curated Selection</span>
+                <h2 class="font-headline-md text-3xl md:text-4xl text-primary mt-2">Featured Listings</h2>
+            </div>
+            <a class="hidden md:flex items-center gap-2 text-secondary font-bold hover:underline" th:href="@{/listings}">
+                View All Properties
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+        <!-- Empty State -->
+        <div class="bg-surface-container-low rounded-2xl py-20 text-center flex flex-col items-center border-2 border-dashed border-outline-variant" th:if="${listings == null or listings.empty}">
+            <div class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-outline text-4xl">domain_disabled</span>
+            </div>
+            <h3 class="font-headline-sm text-primary mb-2">No listings available</h3>
+            <p class="text-on-surface-variant max-w-sm mx-auto">We couldn't find any properties matching your criteria at the moment. Please check back later or try a different search.</p>
+            <button class="mt-8 text-secondary font-bold border-2 border-secondary px-6 py-2 rounded-2xl hover:bg-secondary hover:text-on-primary transition-all">Clear Filters</button>
+        </div>
+        <!-- Listings Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" th:unless="${listings == null or listings.empty}">
+            <!-- Listing Card -->
+            <article class="group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow" th:each="listing : ${listings}">
+                <div class="relative aspect-video overflow-hidden">
+                    <img alt="Property Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An elegant residential property with clean architectural lines, featuring natural stone accents and large windows. The lighting is bright and airy, emphasizing the premium quality and modern minimalist design of the structure. The setting is manicured and high-end, perfectly aligned with a luxury real estate catalog for sophisticated investors." th:src="${listing.image != null ? listing.image : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&amp;fit=crop&amp;q=80&amp;w=800'}"/>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm shadow-sm">Featured</span>
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-surface/50 backdrop-blur-md rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm">
+                        <span class="material-symbols-outlined text-xl">favorite</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-primary font-bold text-2xl" th:text="${#numbers.formatCurrency(listing.price)}">$500,000</span>
+                        <div class="flex items-center gap-1 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span class="font-label-sm">4.9</span>
+                        </div>
+                    </div>
+                    <h3 class="font-headline-sm text-primary mb-1 group-hover:text-secondary transition-colors" th:text="${listing.title}">Luxury Villa</h3>
+                    <div class="flex items-center gap-1 text-on-surface-variant mb-4">
+                        <span class="material-symbols-outlined text-base">location_on</span>
+                        <p class="font-label-md" th:text="${listing.address + ', ' + listing.city}">123 Main St, Addis Ababa</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-4 border-y border-outline-variant/30 mb-4">
+                        <div class="flex flex-col items-center">
+                            <span class="material-symbols-outlined text-secondary">bed</span>
+                            <span class="font-label-sm mt-1 text-on-surface" th:text="${listing.bedrooms + ' Beds'}">3 Beds</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="material-symbols-outlined text-secondary">bathtub</span>
+                            <span class="font-label-sm mt-1 text-on-surface" th:text="${listing.bathrooms + ' Baths'}">2 Baths</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="material-symbols-outlined text-secondary">square_foot</span>
+                            <span class="font-label-sm mt-1 text-on-surface" th:text="${listing.area + ' sqft'}">1,200 sqft</span>
+                        </div>
+                    </div>
+                    <p class="text-on-surface-variant line-clamp-2 font-body-md mb-6" th:text="${listing.description}">A breathtaking luxury villa featuring modern amenities, spacious living areas, and high-end finishes throughout the entire property.</p>
+                    <a class="block w-full bg-primary text-on-primary text-center py-3 rounded-2xl font-bold hover:bg-primary/90 transition-all active:scale-95" th:href="@{/listings}">
+                        View Details
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="bg-primary-container py-section-gap relative overflow-hidden">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 text-center md:text-left">
+                <h2 class="font-display-lg-mobile md:text-display-lg text-on-primary mb-6">List Your Property with Ahadu</h2>
+                <p class="text-primary-fixed-dim font-body-lg mb-8 max-w-xl">Join the premier platform for high-end real estate. Get your property in front of the right investors and buyers today.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <button class="bg-secondary text-on-primary px-8 py-4 rounded-2xl font-bold hover:bg-on-secondary-container transition-all shadow-lg shadow-secondary/20">List a Property</button>
+                    <button class="border-2 border-primary-fixed text-primary-fixed px-8 py-4 rounded-2xl font-bold hover:bg-primary-fixed hover:text-primary transition-all">Learn More</button>
+                </div>
+            </div>
+            <div class="flex-1 w-full max-w-lg">
+                <div class="bg-surface rounded-3xl p-4 shadow-2xl relative">
+                    <img class="rounded-2xl w-full h-80 object-cover" data-alt="A brightly lit, modern office space with minimalist furniture and a large window overlooking a city skyline. The interior uses a professional palette of grays and teals, creating a sense of stability and authority. This image represents the high-end, corporate side of real estate consulting and professional listing services." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ8UGAFWIe15-ISfoCGPn2c9tzL0IOhkKMIET-Ltd7s7qsgKXHuUbKGlAoEBDka-mar2fXFNOvHM9qMUfnsqtuOm_pljWC8AtVeicH8v6IVfA2dQ-11lsewXPfnVH_4P4-fkyZobvN8WD8I2ob4OT5tX-19LnjAhMCySpF3wtDFEWtNpjrjp3LxYAcvnSTLZeldHiY1rr83zixMQ1eYjaxhooeOupmugi_6k3WtUd-aEeRWuRIith_PfJskk_xr6dj-UL-gpgyj5I"/>
+                    <div class="absolute -bottom-6 -left-6 bg-secondary text-on-primary p-6 rounded-2xl shadow-xl hidden md:block">
+                        <span class="text-4xl font-bold block">5k+</span>
+                        <span class="text-sm font-label-md">Trusted Partners</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary border-t border-outline-variant dark:border-outline py-section-gap mt-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+        <div class="flex flex-col gap-4">
+            <div class="font-headline-sm text-headline-sm text-on-primary">Ahadu Real Estate</div>
+            <p class="text-primary-fixed-dim text-body-md max-w-xs">Connecting elite buyers with architectural masterpieces and stable investment opportunities since 2010.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h4 class="font-bold text-secondary-fixed">Quick Links</h4>
+            <div class="flex flex-col gap-2">
+                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/about}">About Us</a>
+                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/terms}">Terms of Service</a>
+                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/privacy}">Privacy Policy</a>
+                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/support}">Contact Support</a>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h4 class="font-bold text-secondary-fixed">Newsletter</h4>
+            <p class="text-primary-fixed-dim text-body-md">Stay updated with the latest premium listings.</p>
+            <div class="flex gap-2">
+                <input class="bg-primary-fixed-dim/10 border border-primary-fixed-dim/20 rounded-xl px-4 py-2 flex-1 focus:ring-secondary focus:border-secondary text-on-primary placeholder:text-primary-fixed-dim/50" placeholder="Your Email" type="email"/>
+                <button class="bg-secondary px-4 py-2 rounded-xl text-on-primary font-bold">Join</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-16 pt-8 border-t border-primary-fixed-dim/10 text-center">
+        <p class="text-primary-fixed-dim text-body-md">© 2024 Ahadu Real Estate. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    // Micro-interaction for listing cards
+    document.querySelectorAll('article').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-4px)';
+            card.style.transition = 'transform 0.3s ease';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+</body></html>

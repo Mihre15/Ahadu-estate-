@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/listings")
+@RequestMapping("/api/listings")
 @RequiredArgsConstructor
 public class ListingController {
     private final ListingService listingService;
