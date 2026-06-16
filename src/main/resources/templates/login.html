@@ -207,49 +207,44 @@
         submitBtnText.textContent = 'Authenticating...';
 
         try {
+            const params = new URLSearchParams();
+            params.append('username', email);   // Spring Security expects 'username'
+            params.append('password', password);
+
             const response = await fetch('/auth/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: JSON.stringify({ email, password })
+                body: params.toString(),
+                redirect: 'manual'
             });
 
-            const data = await response.json();
-
-            if (response.ok) {
-                // Success State
+            if (response.status === 302 || response.status === 0 || response.ok) {
                 messageDiv.classList.remove('hidden');
                 messageDiv.classList.add('bg-secondary-container', 'text-on-secondary-container');
                 messageDiv.innerHTML = `
-                        <span class="material-symbols-outlined">check_circle</span>
-                        <span>Login successful. Redirecting to your dashboard...</span>
-                    `;
-
-                // Delay for visual feedback then redirect
-                setTimeout(() => {
-                    window.location.href = '/dashboard';
-                }, 1500);
+                <span class="material-symbols-outlined">check_circle</span>
+                <span>Login successful. Redirecting...</span>
+            `;
+                setTimeout(() => { window.location.href = '/'; }, 1500);
 
             } else {
-                // Business Logic Error (Invalid Credentials etc)
-                throw new Error(data.message || 'The email or password you entered is incorrect.');
+                throw new Error('The email or password you entered is incorrect.');
             }
 
         } catch (error) {
-            // Error State
             messageDiv.classList.remove('hidden');
             messageDiv.classList.add('bg-error-container', 'text-on-error-container');
             messageDiv.innerHTML = `
-                    <span class="material-symbols-outlined">error</span>
-                    <span>${error.message}</span>
-                `;
-
-            // Reset Button
+            <span class="material-symbols-outlined">error</span>
+            <span>${error.message}</span>
+        `;
             submitBtn.disabled = false;
             submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
             submitBtnText.textContent = 'Login';
         }
+
     });
 
     // Add subtle focus effect on labels

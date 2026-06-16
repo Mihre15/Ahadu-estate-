@@ -17,16 +17,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/",
-                                "/listings",
                                 "/login",
+                                "/listings",
                                 "/register",
                                 "/auth/register",
                                 "/auth/login",
+                                "/favicon.ico",
                                 "/css/**",
                                 "/js/**",
-                                "/images/**"
-                        ).permitAll()
-                        .requestMatchers(
+                                "/images/**",
                                 "/agent/**",
                                 "/api/listings/**",
                                 "/buyer/**",
@@ -35,13 +34,15 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")     // use your PageController + login.html
+                        .loginPage("/login")
+                        .loginProcessingUrl("/auth/login")
+                        .usernameParameter("username")
+                        .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .build();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
