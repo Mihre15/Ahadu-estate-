@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header_head">
+    <!-- This can be used if we want to share head elements, but for now we'll just keep it simple -->
+</head>
+<body>
+
+<!-- Navbar Fragment -->
+<header th:fragment="navbar" class="bg-surface/80 backdrop-blur-md font-body-md text-body-md docked full-width top-0 sticky shadow-sm z-50">
+    <nav class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+        <div class="flex items-center gap-8">
+            <a class="font-headline-md text-headline-md font-bold text-primary" th:href="@{/}">Ahadu Real Estate</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 active:scale-95 transition-transform" 
+                   th:href="@{/}">Home</a>
+                <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 active:scale-95 transition-transform" 
+                   th:href="@{/listings}">Listings</a>
+                <a th:if="${isLoggedIn == true and userRole == 'AGENT'}"
+                   class="text-on-surface-variant hover:text-secondary transition-colors duration-200 active:scale-95 transition-transform"
+                   th:href="@{/agent/dashboard}">Dashboard</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- Public buttons -->
+            <div th:if="${isLoggedIn == false}" class="flex items-center gap-4">
+                <a class="hidden md:block text-on-surface-variant hover:text-secondary transition-colors duration-200 font-label-md" th:href="@{/login}">Login</a>
+                <a class="bg-secondary text-on-primary px-6 py-2.5 rounded-2xl font-label-md font-bold hover:bg-on-secondary-container transition-all active:scale-95" th:href="@{/register}">Register</a>
+            </div>
+
+            <!-- Agent buttons -->
+            <div th:if="${isLoggedIn == true and userRole == 'AGENT'}" class="flex items-center gap-4">
+                <span class="hidden lg:block text-on-surface-variant font-label-md" th:text="${'Agent: ' + userEmail}">agent@example.com</span>
+                <a class="bg-secondary text-on-primary px-6 py-2.5 rounded-2xl font-label-md font-bold hover:bg-on-secondary-container transition-all active:scale-95" th:href="@{/agent/dashboard}">
+                    Agent Dashboard
+                </a>
+                <form th:action="@{/logout}" method="post" class="m-0">
+                    <button type="submit" class="text-on-surface-variant hover:text-error transition-colors duration-200 font-label-md bg-transparent border-none cursor-pointer">
+                        Logout
+                    </button>
+                </form>
+            </div>
+
+            <!-- Buyer buttons -->
+            <div th:if="${isLoggedIn == true and userRole == 'BUYER'}" class="flex items-center gap-4">
+                <span class="hidden lg:block text-on-surface-variant font-label-md" th:text="${userEmail}">user@example.com</span>
+                <a class="bg-secondary text-on-primary px-6 py-2.5 rounded-2xl font-label-md font-bold hover:bg-on-secondary-container transition-all active:scale-95" th:href="@{/buyer/me}">
+                    User Info
+                </a>
+                <form th:action="@{/logout}" method="post" class="m-0">
+                    <button type="submit" class="text-on-surface-variant hover:text-error transition-colors duration-200 font-label-md bg-transparent border-none cursor-pointer">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Footer Fragment -->
+<footer th:fragment="footer" class="bg-primary text-on-primary border-t border-outline-variant dark:border-outline py-section-gap mt-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+        <div class="flex flex-col gap-4">
+            <div class="font-headline-sm text-headline-sm text-on-primary">Ahadu Real Estate</div>
+            <p class="text-primary-fixed-dim text-body-md max-w-xs">Connecting elite buyers with architectural masterpieces and stable investment opportunities since 2010.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h4 class="font-bold text-secondary-fixed">Quick Links</h4>
+            <div class="flex flex-col gap-2">
+                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/about}">About Us</a>
+                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/terms}">Terms of Service</a>
+                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/privacy}">Privacy Policy</a>
+                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/support}">Contact Support</a>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h4 class="font-bold text-secondary-fixed">Newsletter</h4>
+            <p class="text-primary-fixed-dim text-body-md">Stay updated with the latest premium listings.</p>
+            <div class="flex gap-2">
+                <input class="bg-primary-fixed-dim/10 border border-primary-fixed-dim/20 rounded-xl px-4 py-2 flex-1 focus:ring-secondary focus:border-secondary text-on-primary placeholder:text-primary-fixed-dim/50" placeholder="Your Email" type="email"/>
+                <button class="bg-secondary px-4 py-2 rounded-xl text-on-primary font-bold">Join</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-16 pt-8 border-t border-primary-fixed-dim/10 text-center">
+        <p class="text-primary-fixed-dim text-body-md">© 2024 Ahadu Real Estate. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

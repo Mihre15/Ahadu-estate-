@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Login | Ahadu Real Estate</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/>
-    <!-- Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -93,169 +91,164 @@
                         "body-lg": ["Inter"]
                     },
                     "fontSize": {
-                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
-                        "display-lg-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
-                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
-                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "600" }],
-                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
                     }
-                },
-            },
+                }
+            }
         }
     </script>
+
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+
+        .login-card {
+            box-shadow: 0px 4px 20px rgba(30, 41, 59, 0.05);
+        }
+
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #0d9488;
+            box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.1);
         }
     </style>
 </head>
-<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col items-center justify-center relative overflow-x-hidden">
-<!-- Background Layer with Image -->
-<div class="absolute inset-0 z-0 opacity-10">
-    <img alt="" class="w-full h-full object-cover" data-alt="An expansive, high-angle architectural photograph of a modern glass skyscraper reflecting a clear blue sky. The image emphasizes clean lines, structural authority, and professional sophistication using a palette of deep blues and cool grays. The lighting is bright and airy, typical of a high-end light-mode real estate aesthetic, conveying stability and premium service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB63O1288UNxqOwN2CpAb8FYczrwEI8IrlwfrsDYbBWH01E5TDogvmZG3GG6cd0taBRn6bgiVQy-qPILp-ztFhjzYf3Fv_z3ZsBaKlOahpXIBXNostH6OsfdlSKJbIBI-Yz9vRGxmWu6e0nVFpBWEVLx2JNLKarSYOmgcLdix-aqNjfQt6C8Bp4ip6CrEBDX7VqSedKyQatn3HYVR5wKU2CxR2vZbKTFlIX6s3e2hQU46lf6eZks5C615d7rWr7rflWWgJw4z8zSzM"/>
-</div>
-<!-- Login Container -->
-<main class="w-full max-w-md px-margin-mobile md:px-0 z-10">
-    <!-- Brand Logo Header -->
-    <div class="flex justify-center mb-8">
-        <a class="flex items-center gap-2 group transition-transform active:scale-95" href="/">
-            <span class="material-symbols-outlined text-secondary text-3xl">apartment</span>
-            <span class="font-headline-md text-headline-sm font-bold text-primary">Ahadu Real Estate</span>
-        </a>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+
+<!-- Top Navigation Bar -->
+<header th:replace="~{fragments :: navbar}"></header>
+
+<!-- Main Content -->
+<main class="flex-grow flex items-center justify-center py-section-gap px-margin-mobile">
+
+    <!-- Background decorations -->
+    <div class="fixed inset-0 pointer-events-none opacity-5 overflow-hidden z-0">
+        <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-secondary blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-primary-fixed blur-3xl"></div>
     </div>
-    <!-- Login Card -->
-    <div class="glass-panel border border-outline-variant shadow-[0px_12px_32px_rgba(30,41,59,0.08)] rounded-2xl p-8 md:p-10">
-        <header class="text-center mb-8">
-            <h1 class="font-headline-md text-headline-md text-primary mb-2">Welcome Back</h1>
-            <p class="font-body-md text-on-surface-variant">Login to your account</p>
-        </header>
-        <!-- Alert Message Box -->
-        <div class="hidden font-label-md p-4 rounded-xl mb-6 flex items-center gap-3 transition-all duration-300" id="message">
-            <!-- Icon and Text injected via JS -->
+
+    <div class="w-full max-w-md z-10">
+
+        <!-- Login Card -->
+        <div class="login-card bg-surface-container-lowest p-8 md:p-10 rounded-2xl border border-outline-variant/30">
+
+            <div class="text-center mb-8">
+                <h1 class="font-headline-md text-headline-md text-primary mb-2">
+                    Welcome Back
+                </h1>
+                <p class="font-body-md text-on-surface-variant">
+                    Login to access your Ahadu Real Estate account
+                </p>
+            </div>
+
+            <!-- Logout Success Message -->
+            <div th:if="${param.logout}" class="p-4 rounded-xl mb-6 bg-secondary-container text-on-secondary-container font-label-md text-sm">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    <span>You have been logged out successfully.</span>
+                </div>
+            </div>
+
+            <!-- Login Error Message -->
+            <div th:if="${param.error}" class="p-4 rounded-xl mb-6 bg-error-container text-on-error-container font-label-md text-sm">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">error</span>
+                    <span>Invalid email or password. Please try again.</span>
+                </div>
+            </div>
+
+            <!-- Spring Security Login Form -->
+            <form class="space-y-6" th:action="@{/auth/login}" method="post">
+
+                <!-- Email Field -->
+                <div class="space-y-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant block" for="username">
+                        Email Address
+                    </label>
+
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">
+                            mail
+                        </span>
+
+                        <input
+                                class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus"
+                                id="username"
+                                name="username"
+                                placeholder="name@example.com"
+                                required
+                                type="email"/>
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="space-y-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant block" for="password">
+                        Password
+                    </label>
+
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">
+                            lock
+                        </span>
+
+                        <input
+                                class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus"
+                                id="password"
+                                name="password"
+                                placeholder="••••••••"
+                                required
+                                type="password"/>
+                    </div>
+                </div>
+
+                <!-- Remember / Forgot -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center gap-2 text-sm text-on-surface-variant">
+                        <input type="checkbox" name="remember-me" class="rounded border-outline-variant text-secondary focus:ring-secondary"/>
+                        Remember me
+                    </label>
+
+                    <a href="#" class="text-sm font-semibold text-secondary hover:underline">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                        class="w-full py-4 bg-secondary text-on-primary font-bold text-body-md rounded-2xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                        type="submit">
+                    Login
+                    <span class="material-symbols-outlined text-[20px]">
+                        arrow_forward
+                    </span>
+                </button>
+            </form>
+
+            <!-- Register Link -->
+            <div class="mt-8 pt-8 border-t border-outline-variant/30 text-center">
+                <p class="font-body-md text-on-surface-variant">
+                    Don't have an account?
+                    <a class="text-secondary font-semibold hover:underline" th:href="@{/register}">
+                        Create Account
+                    </a>
+                </p>
+            </div>
         </div>
-        <form class="space-y-6" id="loginForm">
-            <!-- Email Field -->
-            <div class="space-y-2">
-                <label class="block font-label-md text-on-surface-variant ml-1" for="email">Email Address</label>
-                <div class="relative">
-                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
-                    <input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-transparent border-2 rounded-xl focus:border-secondary focus:bg-white focus:ring-0 transition-all text-on-surface font-body-md placeholder:text-outline-variant" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
-                </div>
-            </div>
-            <!-- Password Field -->
-            <div class="space-y-2">
-                <div class="flex justify-between items-center px-1">
-                    <label class="font-label-md text-on-surface-variant" for="password">Password</label>
-                    <a class="text-label-sm text-secondary hover:underline transition-all" href="/forgot-password">Forgot password?</a>
-                </div>
-                <div class="relative">
-                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
-                    <input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-transparent border-2 rounded-xl focus:border-secondary focus:bg-white focus:ring-0 transition-all text-on-surface font-body-md placeholder:text-outline-variant" id="password" name="password" placeholder="••••••••" required="" type="password"/>
-                </div>
-            </div>
-            <!-- Remember Me -->
-            <div class="flex items-center px-1">
-                <input class="w-4 h-4 rounded border-outline-variant text-secondary focus:ring-secondary cursor-pointer" id="remember" type="checkbox"/>
-                <label class="ml-2 font-label-md text-on-surface-variant cursor-pointer" for="remember">Keep me logged in</label>
-            </div>
-            <!-- Submit Button -->
-            <button class="w-full bg-secondary hover:bg-on-secondary-container text-white font-label-md py-4 rounded-2xl shadow-lg transition-all active:scale-[0.98] flex justify-center items-center gap-2" id="submitBtn" type="submit">
-                <span>Login</span>
-                <span class="material-symbols-outlined text-lg">arrow_forward</span>
-            </button>
-        </form>
-        <!-- Register Link -->
-        <footer class="mt-8 pt-8 border-t border-outline-variant text-center">
-            <p class="font-body-md text-on-surface-variant">
-                Don't have an account?
-                <a class="text-secondary font-semibold hover:underline decoration-2 underline-offset-4 ml-1" href="/register">Register</a>
-            </p>
-        </footer>
-    </div>
-    <!-- Secondary Footer Links -->
-    <div class="mt-8 flex justify-center gap-6 font-label-sm text-outline">
-        <a class="hover:text-primary transition-colors" href="/terms">Terms of Service</a>
-        <span class="w-1 h-1 rounded-full bg-outline-variant mt-1.5"></span>
-        <a class="hover:text-primary transition-colors" href="/privacy">Privacy Policy</a>
-        <span class="w-1 h-1 rounded-full bg-outline-variant mt-1.5"></span>
-        <a class="hover:text-primary transition-colors" href="/support">Contact Support</a>
     </div>
 </main>
-<script>
-    document.getElementById('loginForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
 
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const messageDiv = document.getElementById('message');
-        const submitBtn = document.getElementById('submitBtn');
-        const submitBtnText = submitBtn.querySelector('span:first-child');
+<!-- Footer -->
+<footer th:replace="~{fragments :: footer}"></footer>
 
-        // UI Reset & Loading State
-        messageDiv.classList.add('hidden');
-        messageDiv.className = 'hidden p-4 rounded-xl mb-6 flex items-center gap-3 transition-all duration-300';
-        submitBtn.disabled = true;
-        submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
-        submitBtnText.textContent = 'Authenticating...';
-
-        try {
-            const params = new URLSearchParams();
-            params.append('username', email);   // Spring Security expects 'username'
-            params.append('password', password);
-
-            const response = await fetch('/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: params.toString(),
-                redirect: 'manual'
-            });
-
-            if (response.status === 302 || response.status === 0 || response.ok) {
-                messageDiv.classList.remove('hidden');
-                messageDiv.classList.add('bg-secondary-container', 'text-on-secondary-container');
-                messageDiv.innerHTML = `
-                <span class="material-symbols-outlined">check_circle</span>
-                <span>Login successful. Redirecting...</span>
-            `;
-                setTimeout(() => { window.location.href = '/'; }, 1500);
-
-            } else {
-                throw new Error('The email or password you entered is incorrect.');
-            }
-
-        } catch (error) {
-            messageDiv.classList.remove('hidden');
-            messageDiv.classList.add('bg-error-container', 'text-on-error-container');
-            messageDiv.innerHTML = `
-            <span class="material-symbols-outlined">error</span>
-            <span>${error.message}</span>
-        `;
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-            submitBtnText.textContent = 'Login';
-        }
-
-    });
-
-    // Add subtle focus effect on labels
-    const inputs = document.querySelectorAll('input');
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.closest('.space-y-2').querySelector('label').classList.add('text-secondary');
-        });
-        input.addEventListener('blur', () => {
-            input.closest('.space-y-2').querySelector('label').classList.remove('text-secondary');
-        });
-    });
-</script>
-</body></html>
+</body>
+</html>

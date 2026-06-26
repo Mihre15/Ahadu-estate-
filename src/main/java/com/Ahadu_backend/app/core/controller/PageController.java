@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @RequiredArgsConstructor
 public class PageController {
-
     private final ListingService listingService;
+
 
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("listings", listingService.getAllListings());
         return "index";
     }
+
 
     @GetMapping("/listings")
     public String listings(Model model) {

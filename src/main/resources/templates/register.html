@@ -116,20 +116,8 @@
     </style>
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
-<!-- Top Navigation Bar (Shared Component Style) -->
-<header class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 w-full shadow-sm">
-    <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-        <a class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2" href="/">
-            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">apartment</span>
-            Ahadu Real Estate
-        </a>
-        <div class="hidden md:flex gap-8">
-            <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200" href="/">Home</a>
-            <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200" href="/listings">Listings</a>
-        </div>
-        <a class="font-body-md text-body-md text-primary font-semibold hover:text-secondary transition-colors" href="/login">Login</a>
-    </div>
-</header>
+<!-- Top Navigation Bar -->
+<header th:replace="~{fragments :: navbar}"></header>
 <!-- Main Content Area -->
 <main class="flex-grow flex items-center justify-center py-section-gap px-margin-mobile">
     <!-- Visual Background Element -->
@@ -147,6 +135,22 @@
             <!-- Alert Message -->
             <div class="hidden p-4 rounded-xl mb-6 font-label-md text-sm transition-all duration-300" id="message"></div>
             <form class="space-y-6" id="registrationForm">
+                <!-- Full Name Field -->
+                <div class="space-y-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant block" for="name">Full Name</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">person</span>
+                        <input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus" id="name" name="name" placeholder="John Doe" required="" type="text"/>
+                    </div>
+                </div>
+                <!-- Phone Number Field -->
+                <div class="space-y-2">
+                    <label class="font-label-md text-label-md text-on-surface-variant block" for="phone">Phone Number</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">call</span>
+                        <input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus" id="phone" name="phone" placeholder="+251..." required="" type="tel"/>
+                    </div>
+                </div>
                 <!-- Email Field -->
                 <div class="space-y-2">
                     <label class="font-label-md text-label-md text-on-surface-variant block" for="email">Email Address</label>
@@ -190,23 +194,8 @@
         </div>
     </div>
 </main>
-<!-- Footer (Shared Component Style) -->
-<footer class="bg-primary py-12 px-margin-mobile md:px-margin-desktop border-t border-outline-variant/10">
-    <div class="max-w-container-max mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-gutter items-center">
-        <div class="text-center md:text-left">
-            <span class="font-headline-sm text-headline-sm text-on-primary block mb-2">Ahadu Real Estate</span>
-            <p class="font-body-md text-primary-fixed-dim text-sm">© 2024 Ahadu Real Estate. All rights reserved.</p>
-        </div>
-        <div class="flex justify-center gap-6">
-            <a class="text-primary-fixed-dim hover:text-secondary-fixed transition-colors text-sm" href="/about">About Us</a>
-            <a class="text-primary-fixed-dim hover:text-secondary-fixed transition-colors text-sm" href="/terms">Terms</a>
-            <a class="text-primary-fixed-dim hover:text-secondary-fixed transition-colors text-sm" href="/privacy">Privacy</a>
-        </div>
-        <div class="text-center md:text-right">
-            <a class="text-primary-fixed-dim hover:text-secondary-fixed transition-colors text-sm" href="/support">Contact Support</a>
-        </div>
-    </div>
-</footer>
+<!-- Footer -->
+<footer th:replace="~{fragments :: footer}"></footer>
 <script>
     const form = document.getElementById('registrationForm');
     const messageDiv = document.getElementById('message');

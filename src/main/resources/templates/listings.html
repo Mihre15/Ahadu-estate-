@@ -113,19 +113,7 @@
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-secondary-container">
 <!-- TopNavBar -->
-<header class="bg-surface/80 backdrop-blur-md shadow-sm docked full-width top-0 sticky z-50">
-    <nav class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-        <a class="font-headline-md text-headline-md font-bold text-primary" th:href="@{/}">Ahadu Real Estate</a>
-        <div class="hidden md:flex items-center gap-8">
-            <a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200" th:href="@{/}">Home</a>
-            <a class="font-body-md text-body-md text-secondary font-bold border-b-2 border-secondary active:scale-95 transition-transform" th:href="@{/listings}">Listings</a>
-        </div>
-        <div class="flex items-center gap-4">
-            <a class="hidden sm:block font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" th:href="@{/login}">Login</a>
-            <a class="bg-secondary text-on-secondary px-6 py-2.5 rounded-2xl font-label-md text-label-md hover:bg-on-secondary-container transition-all active:scale-95" th:href="@{/register}">Register</a>
-        </div>
-    </nav>
-</header>
+<header th:replace="~{fragments :: navbar}"></header>
 <main class="min-h-screen">
     <!-- Hero / Header Section -->
     <section class="py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
@@ -259,39 +247,7 @@
     </section>
 </main>
 <!-- Footer -->
-<footer class="bg-primary text-on-primary border-t border-outline-variant full-width bottom-0">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-        <div>
-            <h4 class="font-headline-sm text-headline-sm text-on-primary mb-6">Ahadu Real Estate</h4>
-            <p class="font-body-md text-body-md text-primary-fixed-dim max-w-xs">
-                Redefining luxury living through curated architectural excellence and personalized property management services.
-            </p>
-        </div>
-        <div class="grid grid-cols-2 gap-8">
-            <div class="flex flex-col gap-4">
-                <h5 class="font-label-md text-label-md text-secondary-fixed uppercase tracking-wider">Company</h5>
-                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors" th:href="@{/about}">About Us</a>
-                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors" th:href="@{/support}">Contact Support</a>
-            </div>
-            <div class="flex flex-col gap-4">
-                <h5 class="font-label-md text-label-md text-secondary-fixed uppercase tracking-wider">Legal</h5>
-                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors" th:href="@{/terms}">Terms of Service</a>
-                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors" th:href="@{/privacy}">Privacy Policy</a>
-            </div>
-        </div>
-        <div class="flex flex-col gap-6">
-            <h5 class="font-label-md text-label-md text-secondary-fixed uppercase tracking-wider">Newsletter</h5>
-            <p class="text-primary-fixed-dim text-sm">Join our exclusive mailing list for early access to new listings.</p>
-            <div class="flex gap-2">
-                <input class="bg-white/10 border-none rounded-xl px-4 py-2 w-full focus:ring-1 focus:ring-secondary-fixed text-on-primary placeholder:text-primary-fixed-dim" placeholder="Email Address" type="email"/>
-                <button class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-xl font-label-sm">Join</button>
-            </div>
-        </div>
-    </div>
-    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-8 border-t border-white/10 text-center text-primary-fixed-dim text-label-sm">
-        © 2024 Ahadu Real Estate. All rights reserved.
-    </div>
-</footer>
+<footer th:replace="~{fragments :: footer}"></footer>
 <script>
     // Simple micro-interactions for filters
     document.querySelectorAll('input, select').forEach(el => {

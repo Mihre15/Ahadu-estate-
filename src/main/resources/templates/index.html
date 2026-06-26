@@ -120,22 +120,32 @@
 </head>
 <body class="bg-background text-on-background font-body-md">
 <!-- TopNavBar -->
-<header class="bg-surface/80 backdrop-blur-md font-body-md text-body-md docked full-width top-0 sticky shadow-sm z-50">
-    <nav class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-        <div class="flex items-center gap-8">
-            <a class="font-headline-md text-headline-md font-bold text-primary" th:href="@{/}">Ahadu Real Estate</a>
-            <div class="hidden md:flex items-center gap-6">
-                <a class="text-secondary font-bold border-b-2 border-secondary hover:text-secondary transition-colors duration-200 active:scale-95 transition-transform" th:href="@{/}">Home</a>
-                <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 active:scale-95 transition-transform" th:href="@{/listings}">Listings</a>
+<header th:replace="~{fragments :: navbar}"></header>
+<main>
+    <!-- Logged In / Public User Section -->
+    <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+
+        <!-- If user is NOT logged in -->
+        <div th:if="${isLoggedIn == false}" class="bg-white rounded-2xl shadow-sm border border-outline-variant p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div>
+                <h2 class="font-headline-md text-headline-md text-primary mb-2">Welcome to Ahadu Real Estate</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                    Login or create an account to access your personalized profile.
+                </p>
+            </div>
+
+            <div class="flex gap-3">
+                <a th:href="@{/login}" class="px-6 py-3 rounded-xl bg-primary text-white font-bold hover:bg-primary-container transition-all">
+                    Login
+                </a>
+                <a th:href="@{/register}" class="px-6 py-3 rounded-xl bg-secondary text-white font-bold hover:bg-opacity-90 transition-all">
+                    Register
+                </a>
             </div>
         </div>
-        <div class="flex items-center gap-4">
-            <a class="hidden md:block text-on-surface-variant hover:text-secondary transition-colors duration-200 font-label-md" th:href="@{/login}">Login</a>
-            <a class="bg-secondary text-on-primary px-6 py-2.5 rounded-2xl font-label-md font-bold hover:bg-on-secondary-container transition-all active:scale-95" th:href="@{/register}">Register</a>
-        </div>
-    </nav>
-</header>
-<main>
+
+        <!-- If user IS logged in -->
+    </section>
     <!-- Hero Section -->
     <section class="relative min-h-[819px] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
@@ -243,8 +253,21 @@
                 <h2 class="font-display-lg-mobile md:text-display-lg text-on-primary mb-6">List Your Property with Ahadu</h2>
                 <p class="text-primary-fixed-dim font-body-lg mb-8 max-w-xl">Join the premier platform for high-end real estate. Get your property in front of the right investors and buyers today.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <button class="bg-secondary text-on-primary px-8 py-4 rounded-2xl font-bold hover:bg-on-secondary-container transition-all shadow-lg shadow-secondary/20">List a Property</button>
-                    <button class="border-2 border-primary-fixed text-primary-fixed px-8 py-4 rounded-2xl font-bold hover:bg-primary-fixed hover:text-primary transition-all">Learn More</button>
+                    <a th:if="${isLoggedIn == true and userRole == 'AGENT'}"
+                       th:href="@{/agent/dashboard}"
+                       class="bg-secondary text-on-primary px-8 py-4 rounded-2xl font-bold hover:bg-on-secondary-container transition-all shadow-lg shadow-secondary/20">
+                        List a Property
+                    </a>
+
+                    <a th:if="${isLoggedIn == false or userRole != 'AGENT'}"
+                       th:href="@{/login}"
+                       class="bg-secondary text-on-primary px-8 py-4 rounded-2xl font-bold hover:bg-on-secondary-container transition-all shadow-lg shadow-secondary/20">
+                        List a Property
+                    </a>
+
+                    <button class="border-2 border-primary-fixed text-primary-fixed px-8 py-4 rounded-2xl font-bold hover:bg-primary-fixed hover:text-primary transition-all">
+                        Learn More
+                    </button>
                 </div>
             </div>
             <div class="flex-1 w-full max-w-lg">
@@ -260,34 +283,7 @@
     </section>
 </main>
 <!-- Footer -->
-<footer class="bg-primary text-on-primary border-t border-outline-variant dark:border-outline py-section-gap mt-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
-        <div class="flex flex-col gap-4">
-            <div class="font-headline-sm text-headline-sm text-on-primary">Ahadu Real Estate</div>
-            <p class="text-primary-fixed-dim text-body-md max-w-xs">Connecting elite buyers with architectural masterpieces and stable investment opportunities since 2010.</p>
-        </div>
-        <div class="flex flex-col gap-4">
-            <h4 class="font-bold text-secondary-fixed">Quick Links</h4>
-            <div class="flex flex-col gap-2">
-                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/about}">About Us</a>
-                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/terms}">Terms of Service</a>
-                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/privacy}">Privacy Policy</a>
-                <a class="text-primary-fixed-dim hover:text-secondary-container transition-colors font-body-md" th:href="@{/support}">Contact Support</a>
-            </div>
-        </div>
-        <div class="flex flex-col gap-4">
-            <h4 class="font-bold text-secondary-fixed">Newsletter</h4>
-            <p class="text-primary-fixed-dim text-body-md">Stay updated with the latest premium listings.</p>
-            <div class="flex gap-2">
-                <input class="bg-primary-fixed-dim/10 border border-primary-fixed-dim/20 rounded-xl px-4 py-2 flex-1 focus:ring-secondary focus:border-secondary text-on-primary placeholder:text-primary-fixed-dim/50" placeholder="Your Email" type="email"/>
-                <button class="bg-secondary px-4 py-2 rounded-xl text-on-primary font-bold">Join</button>
-            </div>
-        </div>
-    </div>
-    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-16 pt-8 border-t border-primary-fixed-dim/10 text-center">
-        <p class="text-primary-fixed-dim text-body-md">© 2024 Ahadu Real Estate. All rights reserved.</p>
-    </div>
-</footer>
+<footer th:replace="~{fragments :: footer}"></footer>
 <script>
     // Micro-interaction for listing cards
     document.querySelectorAll('article').forEach(card => {

@@ -1,5 +1,6 @@
 package com.Ahadu_backend.app.agent.model;
 
+import com.Ahadu_backend.app.auth.model.User;
 import com.Ahadu_backend.app.listing.model.Listing;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,13 +21,16 @@ public class Agent {
 
     private String name;
 
-    @Column(nullable = false, unique = true)
-
+    @Column(unique = true)
     private String phone;
 
     private String agencyName;
 
     private String licenseNumber;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
 
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Listing> listings = new ArrayList<>();
