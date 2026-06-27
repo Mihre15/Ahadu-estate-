@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>List Your Property | Ahadu Real Estate</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1b1b1d",
+                        "inverse-primary": "#bcc7de",
+                        "surface": "#fbf8fa",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "secondary-fixed": "#89f5e7",
+                        "secondary-container": "#86f2e4",
+                        "primary-fixed-dim": "#bcc7de",
+                        "primary": "#091426",
+                        "on-primary-fixed-variant": "#3c475a",
+                        "outline": "#75777d",
+                        "on-surface-variant": "#45474c",
+                        "tertiary-container": "#35260c",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e4e2e3",
+                        "surface-container-low": "#f5f3f4",
+                        "surface-container": "#f0edef",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#111c2d",
+                        "surface-container-high": "#eae7e9",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#564427",
+                        "on-tertiary-fixed": "#271902",
+                        "tertiary-fixed-dim": "#ddc39d",
+                        "surface-tint": "#545f73",
+                        "on-background": "#1b1b1d",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8fa",
+                        "on-secondary-container": "#006f66",
+                        "primary-container": "#1e293b",
+                        "surface-bright": "#fbf8fa",
+                        "outline-variant": "#c5c6cd",
+                        "secondary": "#006a61",
+                        "on-secondary-fixed": "#00201d",
+                        "surface-variant": "#e4e2e3",
+                        "inverse-surface": "#303032",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#fadfb8",
+                        "on-tertiary-container": "#a38c6a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#1e1200",
+                        "surface-dim": "#dcd9db",
+                        "primary-fixed": "#d8e3fb",
+                        "on-primary-container": "#8590a6",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005049"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "section-gap": "80px",
+                        "container-max": "1280px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-sm": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-primary/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30 dark:border-outline/20">
+    <div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+        <div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">
+            Ahadu Real Estate
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Properties</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Agents</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Investments</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="bg-secondary text-on-secondary px-6 py-2.5 rounded-2xl font-label-md text-label-md hover:opacity-90 transition-all active:scale-95 duration-200 text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary">
+                List a Property
+            </button>
+            <button class="md:hidden text-primary">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop bg-surface min-h-screen">
+    <div class="max-w-[900px] mx-auto">
+        <!-- Header Section -->
+        <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-2">List Your Property</h1>
+                <p class="text-on-surface-variant font-body-md">Fill in the details below to showcase your property to our premium network of investors.</p>
+            </div>
+            <div class="flex items-center gap-2 text-secondary font-label-md">
+                <span class="material-symbols-outlined">verified</span>
+                <span>Verified Listing Process</span>
+            </div>
+        </div>
+        <!-- Form Card -->
+        <div class="bg-surface-container-lowest rounded-2xl shadow-[0px_4px_20px_rgba(30,41,59,0.05)] overflow-hidden border border-outline-variant/30">
+            <form class="p-8 md:p-12 space-y-12" id="listingForm">
+                <!-- 1. Basic Information -->
+                <section class="space-y-6">
+                    <div class="flex items-center gap-3 border-b border-outline-variant pb-4">
+                        <span class="material-symbols-outlined text-secondary">info</span>
+                        <h2 class="font-headline-sm text-headline-sm text-primary">Basic Information</h2>
+                    </div>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="space-y-2">
+                            <label class="block font-label-md text-on-surface-variant" for="title">Property Title</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none" id="title" placeholder="e.g. Modern Villa in Bole" required="" type="text"/>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block font-label-md text-on-surface-variant" for="type">Property Type</label>
+                                <select class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none appearance-none" id="type">
+                                    <option>Villa</option>
+                                    <option>Apartment</option>
+                                    <option>Office</option>
+                                    <option>Land</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block font-label-md text-on-surface-variant" for="status">Status</label>
+                                <select class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none appearance-none" id="status">
+                                    <option>For Sale</option>
+                                    <option>For Rent</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 2. Pricing -->
+                <section class="space-y-6">
+                    <div class="flex items-center gap-3 border-b border-outline-variant pb-4">
+                        <span class="material-symbols-outlined text-secondary">payments</span>
+                        <h2 class="font-headline-sm text-headline-sm text-primary">Pricing</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <div class="space-y-2">
+                            <label class="block font-label-md text-on-surface-variant" for="price">Price (ETB)</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none" id="price" oninput="updateCurrencyPreview(this.value)" placeholder="Enter amount" type="number"/>
+                        </div>
+                        <div class="bg-secondary-container/20 p-6 rounded-lg border border-secondary/10">
+                            <span class="block text-secondary font-label-sm uppercase mb-1">Formatted Preview</span>
+                            <div class="font-headline-md text-primary" id="currencyPreview">0.00 ETB</div>
+                            <p class="text-on-surface-variant text-label-sm mt-2">Final listed price inclusive of standard service fees.</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- 3. Location -->
+                <section class="space-y-6">
+                    <div class="flex items-center gap-3 border-b border-outline-variant pb-4">
+                        <span class="material-symbols-outlined text-secondary">location_on</span>
+                        <h2 class="font-headline-sm text-headline-sm text-primary">Location</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="block font-label-md text-on-surface-variant" for="address">Address line</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none" id="address" placeholder="e.g. Near Edna Mall, 4th Street" type="text"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block font-label-md text-on-surface-variant" for="city">City</label>
+                            <select class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none appearance-none" id="city">
+                                <option>Addis Ababa</option>
+                                <option>Bishoftu</option>
+                                <option>Adama</option>
+                                <option>Hawassa</option>
+                                <option>Bahir Dar</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block font-label-md text-on-surface-variant" for="subcity">Sub-city / Zone</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none" id="subcity" placeholder="e.g. Bole" type="text"/>
+                        </div>
+                    </div>
+                </section>
+                <!-- 4. Property Features -->
+                <section class="space-y-6">
+                    <div class="flex items-center gap-3 border-b border-outline-variant pb-4">
+                        <span class="material-symbols-outlined text-secondary">meeting_room</span>
+                        <h2 class="font-headline-sm text-headline-sm text-primary">Property Features</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="space-y-2">
+                            <label class="block font-label-md text-on-surface-variant" for="beds">Bedrooms</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none" id="beds" min="0" type="number" value="1"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block font-label-md text-on-surface-variant" for="baths">Bathrooms</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none" id="baths" min="0" type="number" value="1"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block font-label-md text-on-surface-variant" for="area">Area (sqft)</label>
+                            <input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none" id="area" placeholder="e.g. 2500" type="number"/>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block font-label-md text-on-surface-variant" for="desc">Long Description</label>
+                        <textarea class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none resize-none" id="desc" placeholder="Describe the property's unique selling points, amenities, and surroundings..." rows="5"></textarea>
+                    </div>
+                </section>
+                <!-- 5. Media -->
+                <section class="space-y-6">
+                    <div class="flex items-center gap-3 border-b border-outline-variant pb-4">
+                        <span class="material-symbols-outlined text-secondary">photo_camera</span>
+                        <h2 class="font-headline-sm text-headline-sm text-primary">Media</h2>
+                    </div>
+                    <div class="border-2 border-dashed border-outline-variant rounded-2xl p-12 text-center group hover:border-secondary hover:bg-secondary-container/5 transition-all cursor-pointer">
+                        <span class="material-symbols-outlined text-outline group-hover:text-secondary text-5xl mb-4 transition-colors">cloud_upload</span>
+                        <h3 class="font-headline-sm text-primary mb-2">Upload Property Images</h3>
+                        <p class="text-on-surface-variant font-body-md max-w-sm mx-auto">Drag and drop high-resolution photos here, or click to browse files. Minimum 5 photos recommended.</p>
+                        <input class="hidden" id="fileInput" multiple="" type="file"/>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <!-- Placeholder previews -->
+                        <div class="aspect-square bg-surface-container-high rounded-xl flex items-center justify-center border border-outline-variant/30">
+                            <span class="material-symbols-outlined text-outline-variant text-3xl">image</span>
+                        </div>
+                        <div class="aspect-square bg-surface-container-high rounded-xl flex items-center justify-center border border-outline-variant/30">
+                            <span class="material-symbols-outlined text-outline-variant text-3xl">image</span>
+                        </div>
+                        <div class="aspect-square bg-surface-container-high rounded-xl flex items-center justify-center border border-outline-variant/30">
+                            <span class="material-symbols-outlined text-outline-variant text-3xl">image</span>
+                        </div>
+                        <div class="aspect-square bg-surface-container-high rounded-xl flex items-center justify-center border border-outline-variant/30">
+                            <span class="material-symbols-outlined text-outline-variant text-3xl">image</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- Form Actions -->
+                <div class="pt-8 flex flex-col md:flex-row gap-4 border-t border-outline-variant">
+                    <button class="flex-1 bg-secondary text-on-secondary px-8 py-5 rounded-2xl font-headline-sm text-headline-sm hover:brightness-110 active:scale-95 transition-all shadow-md" type="submit">
+                        Publish Listing
+                    </button>
+                    <button class="flex-1 border-2 border-primary text-primary px-8 py-5 rounded-2xl font-headline-sm text-headline-sm hover:bg-primary hover:text-on-primary active:scale-95 transition-all" type="button">
+                        Save as Draft
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- Additional Help/Trust indicators -->
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-secondary-container/30 rounded-full flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-secondary">security</span>
+                </div>
+                <div>
+                    <h4 class="font-label-md text-primary">Secure Data</h4>
+                    <p class="text-label-sm text-on-surface-variant">Your property data is protected with industry-standard encryption.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-secondary-container/30 rounded-full flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-secondary">visibility</span>
+                </div>
+                <div>
+                    <h4 class="font-label-md text-primary">High Visibility</h4>
+                    <p class="text-label-sm text-on-surface-variant">Listings reach over 50,000 active property seekers monthly.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-secondary-container/30 rounded-full flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-secondary">support_agent</span>
+                </div>
+                <div>
+                    <h4 class="font-label-md text-primary">Agent Support</h4>
+                    <p class="text-label-sm text-on-surface-variant">Dedicated agents available to help optimize your listing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-primary dark:bg-surface-container-lowest text-on-primary dark:text-on-surface">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+        <div class="space-y-6">
+            <div class="font-headline-sm text-headline-sm font-bold text-on-primary dark:text-primary">Ahadu Real Estate</div>
+            <p class="font-body-md text-body-md text-on-primary-fixed-variant dark:text-on-surface-variant">Redefining property ownership in East Africa with precision, transparency, and architectural excellence.</p>
+        </div>
+        <div>
+            <h4 class="font-label-md text-label-md mb-6 uppercase tracking-wider text-secondary-fixed dark:text-secondary">Company</h4>
+            <ul class="space-y-4 font-body-md text-body-md">
+                <li><a class="text-on-primary-fixed-variant dark:text-on-surface-variant hover:text-white transition-colors hover:underline" href="#">About Us</a></li>
+                <li><a class="text-on-primary-fixed-variant dark:text-on-surface-variant hover:text-white transition-colors hover:underline" href="#">Careers</a></li>
+                <li><a class="text-on-primary-fixed-variant dark:text-on-surface-variant hover:text-white transition-colors hover:underline" href="#">Terms of Service</a></li>
+                <li><a class="text-on-primary-fixed-variant dark:text-on-surface-variant hover:text-white transition-colors hover:underline" href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-md text-label-md mb-6 uppercase tracking-wider text-secondary-fixed dark:text-secondary">Explore</h4>
+            <ul class="space-y-4 font-body-md text-body-md">
+                <li><a class="text-on-primary-fixed-variant dark:text-on-surface-variant hover:text-white transition-colors hover:underline" href="#">New Developments</a></li>
+                <li><a class="text-on-primary-fixed-variant dark:text-on-surface-variant hover:text-white transition-colors hover:underline" href="#">Luxury Estates</a></li>
+                <li><a class="text-on-primary-fixed-variant dark:text-on-surface-variant hover:text-white transition-colors hover:underline" href="#">Commercial Property</a></li>
+                <li><a class="text-on-primary-fixed-variant dark:text-on-surface-variant hover:text-white transition-colors hover:underline" href="#">Investments</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-label-md text-label-md mb-6 uppercase tracking-wider text-secondary-fixed dark:text-secondary">Newsletter</h4>
+            <p class="text-on-primary-fixed-variant dark:text-on-surface-variant mb-4">Stay updated with market trends.</p>
+            <div class="flex overflow-hidden rounded-lg">
+                <input class="bg-primary-container text-on-primary px-4 py-2 w-full outline-none border-none" placeholder="Email address" type="email"/>
+                <button class="bg-secondary text-on-secondary px-4 py-2 font-label-md">Join</button>
+            </div>
+        </div>
+    </div>
+    <div class="mt-section-gap pt-8 border-t border-on-primary-fixed-variant/20 px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-body-md text-on-primary-fixed-variant dark:text-on-surface-variant">© 2024 Ahadu Real Estate. All rights reserved.</p>
+        <div class="flex gap-6">
+            <span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">public</span>
+            <span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">alternate_email</span>
+            <span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">share_location</span>
+        </div>
+    </div>
+</footer>
+<script>
+    function updateCurrencyPreview(val) {
+        const preview = document.getElementById('currencyPreview');
+        if (!val || isNaN(val)) {
+            preview.innerText = '0.00 ETB';
+            return;
+        }
+        const formatted = new Intl.NumberFormat('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }).format(val);
+        preview.innerText = `${formatted} ETB`;
+    }
+
+    // Form submission animation
+    document.getElementById('listingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = e.submitter;
+        const originalText = btn.innerText;
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2">progress_activity</span> Processing...';
+
+        setTimeout(() => {
+            btn.innerHTML = '<span class="material-symbols-outlined mr-2">check_circle</span> Published Successfully';
+            btn.classList.replace('bg-secondary', 'bg-green-600');
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerText = originalText;
+                btn.classList.replace('bg-green-600', 'bg-secondary');
+                alert('Listing submitted! Our agents will review and verify it within 24 hours.');
+            }, 2000);
+        }, 1500);
+    });
+
+    // Trigger file input
+    const dropZone = document.querySelector('.border-dashed');
+    dropZone.addEventListener('click', () => document.getElementById('fileInput').click());
+</script>
+</body></html>

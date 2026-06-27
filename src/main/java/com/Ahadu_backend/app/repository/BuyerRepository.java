@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface BuyerRepository extends JpaRepository<Buyer, Long> {
 
     Optional<Buyer> findByUserId(Long userId);
+    Optional<Buyer> findByUserEmail(String email);
 
     List<Buyer> findByPreferredCity(String preferredCity);
 

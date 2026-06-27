@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buyer Profile | Ahadu Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<header class="bg-white shadow-sm">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a th:href="@{/}" class="text-2xl font-bold text-slate-900">
+            Ahadu Real Estate
+        </a>
+
+        <div class="flex items-center gap-4">
+            <a th:href="@{/}" class="text-gray-600 hover:text-teal-600">
+                Home
+            </a>
+
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">
+                    Logout
+                </button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<main class="max-w-4xl mx-auto px-6 py-12">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+        <p class="text-sm font-semibold text-teal-600 uppercase tracking-wide mb-2">
+            Buyer Information
+        </p>
+
+        <h1 class="text-3xl font-bold text-slate-900 mb-6">
+            My Profile
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <p class="text-sm text-gray-500">Name</p>
+                <p class="text-lg font-semibold" th:text="${buyer.name}">Buyer Name</p>
+            </div>
+
+            <div>
+                <p class="text-sm text-gray-500">Email</p>
+                <p class="text-lg font-semibold" th:text="${userEmail}">buyer@example.com</p>
+            </div>
+
+            <div>
+                <p class="text-sm text-gray-500">Phone</p>
+                <p class="text-lg font-semibold" th:text="${buyer.phone}">Phone</p>
+            </div>
+
+            <div>
+                <p class="text-sm text-gray-500">Preferred City</p>
+                <p class="text-lg font-semibold" th:text="${buyer.preferredCity}">Preferred City</p>
+            </div>
+
+            <div>
+                <p class="text-sm text-gray-500">Minimum Budget</p>
+                <p class="text-lg font-semibold" th:text="${buyer.budgetMin}">0</p>
+            </div>
+
+            <div>
+                <p class="text-sm text-gray-500">Maximum Budget</p>
+                <p class="text-lg font-semibold" th:text="${buyer.budgetMax}">0</p>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <a th:href="@{/}" class="inline-block bg-teal-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-teal-700">
+                Back to Home
+            </a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

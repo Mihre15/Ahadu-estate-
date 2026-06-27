@@ -1,6 +1,5 @@
 <!doctype html>
-
-<html class="light" lang="en">
+<html class="light" lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -23,6 +22,13 @@
     />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -137,6 +143,7 @@
         },
       };
     </script>
+
     <style>
       .material-symbols-outlined {
         font-variation-settings:
@@ -347,7 +354,7 @@
               // Delay for visual feedback then redirect
               setTimeout(() => {
                 window.location.href = "/dashboard";
-              }, 500);
+              }, 1500);
             } else {
               // Business Logic Error (Invalid Credentials etc)
               throw new Error(
@@ -364,7 +371,7 @@
             );
             messageDiv.innerHTML = `
                     <span class="material-symbols-outlined">error</span>
-                    <span>Something Went wring internaly, please try again</span>
+                    <span>${error.message}</span>
                 `;
 
             // Reset Button

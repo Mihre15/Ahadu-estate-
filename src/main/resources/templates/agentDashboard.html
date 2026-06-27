@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>My Listed Properties | Ahadu Real Estate</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#006a61",
+                        "primary-fixed-dim": "#bcc7de",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-tertiary-fixed": "#271902",
+                        "on-primary-fixed-variant": "#3c475a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#00201d",
+                        "inverse-on-surface": "#f3f0f2",
+                        "primary": "#091426",
+                        "tertiary-container": "#35260c",
+                        "primary-container": "#1e293b",
+                        "tertiary-fixed-dim": "#ddc39d",
+                        "on-tertiary-container": "#a38c6a",
+                        "on-secondary-fixed-variant": "#005049",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#111c2d",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#fadfb8",
+                        "tertiary": "#1e1200",
+                        "surface-container-high": "#eae7e9",
+                        "surface-container-highest": "#e4e2e3",
+                        "secondary-container": "#86f2e4",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c5c6cd",
+                        "inverse-surface": "#303032",
+                        "background": "#fbf8fa",
+                        "surface-container": "#f0edef",
+                        "secondary-fixed": "#89f5e7",
+                        "outline": "#75777d",
+                        "on-tertiary-fixed-variant": "#564427",
+                        "surface-dim": "#dcd9db",
+                        "surface-bright": "#fbf8fa",
+                        "primary-fixed": "#d8e3fb",
+                        "inverse-primary": "#bcc7de",
+                        "surface": "#fbf8fa",
+                        "surface-container-low": "#f5f3f4",
+                        "on-secondary-container": "#006f66",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1b1d",
+                        "surface-variant": "#e4e2e3",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#8590a6",
+                        "on-surface": "#1b1b1d",
+                        "surface-tint": "#545f73",
+                        "on-surface-variant": "#45474c",
+                        "brand-teal": "#0d9488",
+                        "brand-navy": "#1e293b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "section-gap": "80px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        body {
+            background-color: #fbf8fa;
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar -->
+<header th:replace="~{fragments :: navbar}"></header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+    <!-- Dashboard Header & Agent Info Cluster -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-12">
+        <!-- Hero Summary -->
+        <div class="lg:col-span-8 flex flex-col justify-center">
+            <h1 class="font-display-lg text-display-lg text-primary mb-2">My Listed Properties</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">
+                Manage your portfolio and track performance. You have <span class="font-bold text-brand-teal" th:text="${#lists.size(listings)}">12</span> active listings.
+            </p>
+        </div>
+        <!-- Agent Profile Card -->
+        <div class="lg:col-span-4 bg-white p-6 rounded-2xl shadow-[0px_4px_20px_rgba(30,41,59,0.05)] border border-outline-variant/50 flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-highest">
+                <img alt="Agent Portrait" class="w-full h-full object-cover" data-alt="A professional headshot of a real estate agent in a modern navy suit, smiling confidently against a soft-focus architectural background. The lighting is clean and bright, emphasizing a premium corporate aesthetic consistent with a high-end luxury property brand. The overall mood is approachable yet authoritative." src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&amp;fit=crop&amp;w=100&amp;q=80">
+            </div>
+            <div class="flex-grow">
+                <h3 class="font-headline-sm text-headline-sm text-primary" th:text="${agent.name}">Desta Abraham</h3>
+                <p class="text-label-md font-label-md text-brand-teal mb-1" th:text="${agent.agencyName}">Elite Realty Group</p>
+                <div class="flex flex-col text-label-sm font-label-sm text-on-surface-variant gap-1">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">call</span> <span th:text="${agent.phone}">+251 911 234 567</span>
+</span>
+                    <span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">mail</span> <span th:text="${agent.user.email}">desta@ahadu.com</span>
+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Action Bar -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-xl border border-outline-variant/30 flex-grow md:flex-grow-0">
+            <span class="material-symbols-outlined text-on-surface-variant">search</span>
+            <input class="bg-transparent border-none focus:ring-0 text-body-md w-full md:w-64 placeholder:text-outline" placeholder="Search your listings..." type="text"/>
+        </div>
+        <a th:href="@{/agent/listings/new}" class="bg-brand-teal text-white px-6 py-3 rounded-2xl flex items-center gap-2 font-body-md font-bold hover:shadow-lg transition-all active:scale-95 group">
+            <span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
+            Add New Listing
+        </a>
+    </div>
+    <!-- Listings Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" th:if="${not #lists.isEmpty(listings)}">
+        <!-- Property Card Loop -->
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-[0px_4px_20px_rgba(30,41,59,0.05)] border border-outline-variant/50 hover:shadow-[0px_12px_32px_rgba(30,41,59,0.12)] transition-all flex flex-col" th:each="listing : ${listings}">
+            <!-- Image Section -->
+            <div class="relative aspect-video overflow-hidden">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                     data-alt="A luxurious modern villa featuring expansive glass windows and sleek architectural lines, set against a twilight sky with warm interior lighting spilling out onto a manicured garden. The photography style is high-contrast and high-resolution, evoking a sense of prestige and modern elegance. The colors are dominated by deep blues and golden ambers."
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC-qnRESxoN-aupNO-VujBPMlzLLTQ9lX4wWbhFm32WPHnxerhMGLL1_HsUiXv9N9u1QjrnHgnvcTc8K0W6Mmes1Ulg2Ll8EcojITNnpSqy6VCkTiV62l4tDnYCXJCJXtzbwVsoDS163fCxFEpl5bZ6v5uHmkUA5hiUv8sM7_vf9VtP2NJN90mIR3s6gQCfa0X6hv7LgF0vQCdvq55Fg3ZvjWATunZwRcn8OuoKZthSRsRDnOrYXYf8qVRVEbUdriIv3yWy16KIIY"
+                     th:src="${listing.image != null ? listing.image : 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;q=80&amp;w=800'}"/>
+                <div class="absolute top-4 left-4">
+<span class="px-3 py-1 rounded-full text-label-sm font-label-sm backdrop-blur-md shadow-sm" th:classappend="${listing.status == 'Active' ? 'bg-secondary-container text-on-secondary-container' : 'bg-surface-container-highest text-on-surface-variant'}" th:text="${listing.status}">
+                            Active
+                        </span>
+                </div>
+            </div>
+            <!-- Content Section -->
+            <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="font-headline-sm text-headline-sm text-primary leading-tight line-clamp-1" th:text="${listing.title}">Luxury Villa in Bole</h4>
+                    <p class="font-bold text-brand-teal text-headline-sm" th:text="${listing.price}">$2,500,000</p>
+                </div>
+                <p class="text-label-md font-label-md text-on-surface-variant flex items-center gap-1 mb-4">
+                    <span class="material-symbols-outlined text-[18px]">location_on</span> <span th:text="${listing.address + ', ' + listing.city}">Bole, Addis Ababa</span>
+                </p>
+                <!-- Specs Row -->
+                <div class="flex items-center gap-4 mb-4 py-3 border-y border-outline-variant/30">
+                    <div class="flex items-center gap-1 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-brand-teal" style="font-variation-settings: 'FILL' 1;">bed</span>
+                        <span class="text-label-sm" th:text="${listing.bedrooms + ' Beds'}">4 Beds</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-brand-teal" style="font-variation-settings: 'FILL' 1;">bathtub</span>
+                        <span class="text-label-sm" th:text="${listing.bathrooms + ' Baths'}">3 Baths</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-on-surface-variant">
+                        <span class="material-symbols-outlined text-brand-teal" style="font-variation-settings: 'FILL' 1;">square_foot</span>
+                        <span class="text-label-sm" th:text="${listing.area + ' sqft'}">3,200 sqft</span>
+                    </div>
+                </div>
+                <p class="text-body-md text-on-surface-variant line-clamp-2 mb-6" th:text="${listing.description}">
+                    This exceptional property offers modern living at its finest with high-end finishes throughout and panoramic city views.
+                </p>
+                <!-- Card Actions -->
+                <div class="flex items-center gap-2 mt-auto">
+                    <a class="flex-grow text-center py-2 border-2 border-brand-navy rounded-xl text-label-md font-bold text-brand-navy hover:bg-brand-navy hover:text-white transition-all" th:href="@{/listings/{id}(id=${listing.id})}">
+                        View Details
+                    </a>
+                    <a class="bg-brand-teal text-white px-4 py-2 rounded-xl flex items-center justify-center hover:bg-opacity-90 transition-all" th:href="@{/listings/edit/{id}(id=${listing.id})}">
+                        <span class="material-symbols-outlined text-[20px]">edit</span>
+                    </a>
+                    <button class="px-3 py-2 rounded-xl border border-error text-error hover:bg-error hover:text-white transition-all">
+                        <span class="material-symbols-outlined text-[20px]">delete</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Empty State (Conditional) -->
+    <div class="flex flex-col items-center justify-center py-24 text-center" th:if="${#lists.isEmpty(listings)}">
+        <div class="w-64 h-64 mb-8 opacity-40">
+
+        </div>
+        <h2 class="font-headline-md text-headline-md text-primary mb-2">No listings yet.</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md">
+            Start by adding your first property to our marketplace and connect with thousands of potential buyers.
+        </p>
+        <a th:href="@{/agent/listings/new}" class="bg-brand-teal text-white px-8 py-3 rounded-2xl font-bold flex items-center gap-2 hover:shadow-xl transition-all active:scale-95">
+            <span class="material-symbols-outlined">add_circle</span>
+            Add Your First Property
+        </a>
+    </div>
+</main>
+<!-- Footer -->
+<footer th:replace="~{fragments :: footer}"></footer>
+<script>
+    // Simple Micro-interaction for Delete action
+    document.querySelectorAll('button').forEach(btn => {
+        if (btn.querySelector('.material-symbols-outlined')?.textContent === 'delete') {
+            btn.addEventListener('click', (e) => {
+                if(!confirm('Are you sure you want to remove this listing? This action cannot be undone.')) {
+                    e.preventDefault();
+                }
+            });
+        }
+    });
+</script>
+</body></html>

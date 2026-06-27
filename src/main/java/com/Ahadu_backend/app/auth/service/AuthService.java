@@ -8,6 +8,10 @@ import com.Ahadu_backend.app.auth.dto.LoginRequestDto;
 import com.Ahadu_backend.app.auth.dto.RegisterRequestDto;
 import com.Ahadu_backend.app.auth.model.User;
 import com.Ahadu_backend.app.repository.UserRepository;
+import com.Ahadu_backend.app.agent.model.Agent;
+import com.Ahadu_backend.app.buyer.model.Buyer;
+import com.Ahadu_backend.app.repository.AgentRepository;
+import com.Ahadu_backend.app.repository.BuyerRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,6 +19,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthService implements IAuthService {
     private final UserRepository userRepository;
+    private final AgentRepository agentRepository;
+    private final BuyerRepository buyerRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
 
@@ -33,6 +39,21 @@ public class AuthService implements IAuthService {
         user.setRole(dto.getRole());
 
         User savedUser = userRepository.save(user);
+
+        // Create specialized profile based on role
+        if (com.Ahadu_backend.app.auth.model.Role.AGENT.equals(dto.getRole())) {
+            Agent agent = new Agent();
+            agent.setUser(savedUser);
+            agent.setName(dto.getName());
+            agent.setPhone(dto.getPhone());
+            agentRepository.save(agent);
+        } else if (com.Ahadu_backend.app.auth.model.Role.BUYER.equals(dto.getRole())) {
+            Buyer buyer = new Buyer();
+            buyer.setUser(savedUser);
+            buyer.setName(dto.getName());
+            buyer.setPhone(dto.getPhone());
+            buyerRepository.save(buyer);
+        }
 
         String token = jwtService.generateToken(savedUser);
 
