@@ -48,8 +48,7 @@ class GlobalControllerAdviceTest {
         agent.setName("Amina Agent");
         when(agentRepository.findByUserEmail("amina@example.com")).thenReturn(Optional.of(agent));
         SecurityContextHolder.getContext().setAuthentication(
-                new TestingAuthenticationToken("amina@example.com", "password", "ROLE_AGENT")
-        );
+                new TestingAuthenticationToken("amina@example.com", "password", "ROLE_AGENT"));
         ExtendedModelMap model = new ExtendedModelMap();
 
         advice.addGlobalAttributes(model);
@@ -68,8 +67,7 @@ class GlobalControllerAdviceTest {
         buyer.setName("Bereket Buyer");
         when(buyerRepository.findByUserEmail("bereket@example.com")).thenReturn(Optional.of(buyer));
         SecurityContextHolder.getContext().setAuthentication(
-                new TestingAuthenticationToken("bereket@example.com", "password", "BUYER")
-        );
+                new TestingAuthenticationToken("bereket@example.com", "password", "BUYER"));
         ExtendedModelMap model = new ExtendedModelMap();
 
         advice.addGlobalAttributes(model);
@@ -87,8 +85,7 @@ class GlobalControllerAdviceTest {
         agent.setName(" ");
         when(agentRepository.findByUserEmail("agent@example.com")).thenReturn(Optional.of(agent));
         SecurityContextHolder.getContext().setAuthentication(
-                new TestingAuthenticationToken("agent@example.com", "password", "AGENT")
-        );
+                new TestingAuthenticationToken("agent@example.com", "password", "AGENT"));
         ExtendedModelMap model = new ExtendedModelMap();
 
         advice.addGlobalAttributes(model);

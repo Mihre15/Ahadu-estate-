@@ -26,8 +26,8 @@ public class PageController {
 
     @GetMapping("/")
     public String home(@RequestParam(required = false) String q,
-                       @RequestParam(required = false) String propertyType,
-                       Model model) {
+            @RequestParam(required = false) String propertyType,
+            Model model) {
         boolean hasSearch = (q != null && !q.isBlank())
                 || (propertyType != null && !propertyType.isBlank() && !"Property Type".equalsIgnoreCase(propertyType));
 
@@ -53,7 +53,8 @@ public class PageController {
     }
 
     @PostMapping("/listings/{id}/request")
-    public String requestListing(@PathVariable Long id, Authentication authentication, RedirectAttributes redirectAttributes) {
+    public String requestListing(@PathVariable Long id, Authentication authentication,
+            RedirectAttributes redirectAttributes) {
         Listing listing = listingService.getListingEntityById(id);
         String email = authentication.getName();
         String role = authentication.getAuthorities()
@@ -98,4 +99,3 @@ public class PageController {
         return "register";
     }
 }
-
