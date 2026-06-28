@@ -17,4 +17,6 @@ public interface BuyerRepository extends JpaRepository<Buyer, Long> {
     List<Buyer> findByBudgetMaxGreaterThanEqual(Double budget);
 
     List<Buyer> findByBudgetMinLessThanEqual(Double budget);
+
+    List<Buyer> findDistinctByRequestedListingsId(Long listingId);
 }

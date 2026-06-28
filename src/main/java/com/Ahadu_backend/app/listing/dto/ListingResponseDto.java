@@ -15,6 +15,9 @@ public class ListingResponseDto {
     private Integer bedrooms;
     private Integer bathrooms;
     private Double area;
+    private String image;
+    private String propertyType;
+    private String listingStatus;
 
     private Long agentId;
     private String agentName;

@@ -27,6 +27,9 @@ public class ListingDocument {
     private String image;
     private Integer bathrooms;
     private Double area;
+    private String propertyType;
+    private String listingStatus;
 
     private Long agentId;
 }
+

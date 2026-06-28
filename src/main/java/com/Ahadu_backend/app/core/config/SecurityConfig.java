@@ -4,6 +4,7 @@ import com.Ahadu_backend.app.auth.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +17,7 @@ import com.Ahadu_backend.app.repository.UserRepository;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final UserRepository userRepository;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -28,27 +30,43 @@ public class SecurityConfig {
                                 "/register",
                                 "/auth/register",
                                 "/auth/login",
+                                "/perform-login",
                                 "/favicon.ico",
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
-                                "/agent/**",
+                                "/uploads/**",
                                 "/api/listings/**",
-                                "/buyer/**",
                                 "/photo/**"
                         ).permitAll()
-                        .requestMatchers("/agent/dashboard").hasAnyAuthority("AGENT", "ROLE_AGENT")
-                        .requestMatchers("/buyer/me").hasAnyAuthority("BUYER", "ROLE_BUYER")
+                        .requestMatchers(HttpMethod.GET, "/listings/**").permitAll()
+                        .requestMatchers("/agent/listings/**", "/agent/dashboard", "/agent/profile").hasAnyAuthority("AGENT", "ROLE_AGENT")
+                        .requestMatchers("/buyer/me", "/buyer/profile").hasAnyAuthority("BUYER", "ROLE_BUYER")
+                        .requestMatchers("/listings/*/request").hasAnyAuthority("BUYER", "AGENT", "ROLE_BUYER", "ROLE_AGENT")
                         .requestMatchers("/agent/**").hasAnyAuthority("AGENT", "ROLE_AGENT")
                         .requestMatchers("/buyer/**").hasAnyAuthority("BUYER", "ROLE_BUYER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .loginProcessingUrl("/auth/login")
+                        .loginProcessingUrl("/perform-login")
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/", true)
+                        .successHandler((request, response, authentication) -> {
+                            String role = authentication.getAuthorities()
+                                    .stream()
+                                    .map(authority -> authority.getAuthority().replace("ROLE_", ""))
+                                    .findFirst()
+                                    .orElse("");
+
+                            if ("AGENT".equals(role)) {
+                                response.sendRedirect("/agent/dashboard");
+                            } else if ("BUYER".equals(role)) {
+                                response.sendRedirect("/buyer/me");
+                            } else {
+                                response.sendRedirect("/");
+                            }
+                        })
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )
@@ -62,6 +80,7 @@ public class SecurityConfig {
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .build();
     }
+
     @Bean
     public UserDetailsService userDetailsService() {
         return email -> {
@@ -75,8 +94,12 @@ public class SecurityConfig {
                     .build();
         };
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
+
+
+

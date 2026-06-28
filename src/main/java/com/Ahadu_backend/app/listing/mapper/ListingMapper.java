@@ -10,17 +10,7 @@ import org.springframework.stereotype.Component;
 public class ListingMapper {
     public Listing toEntity(ListingRequestDto dto, Agent agent) {
         Listing listing = new Listing();
-
-        listing.setTitle(dto.getTitle());
-        listing.setDescription(dto.getDescription());
-        listing.setAddress(dto.getAddress());
-        listing.setCity(dto.getCity());
-        listing.setPrice(dto.getPrice());
-        listing.setBedrooms(dto.getBedrooms());
-        listing.setBathrooms(dto.getBathrooms());
-        listing.setArea(dto.getArea());
-        listing.setAgent(agent);
-
+        updateEntity(listing, dto, agent);
         return listing;
     }
 
@@ -36,6 +26,9 @@ public class ListingMapper {
         dto.setBedrooms(listing.getBedrooms());
         dto.setBathrooms(listing.getBathrooms());
         dto.setArea(listing.getArea());
+        dto.setImage(listing.getImage());
+        dto.setPropertyType(listing.getPropertyType());
+        dto.setListingStatus(listing.getListingStatus());
 
         if (listing.getAgent() != null) {
             dto.setAgentId(listing.getAgent().getId());
@@ -55,6 +48,9 @@ public class ListingMapper {
         listing.setBedrooms(dto.getBedrooms());
         listing.setBathrooms(dto.getBathrooms());
         listing.setArea(dto.getArea());
+        listing.setImage(dto.getImage());
+        listing.setPropertyType(dto.getPropertyType());
+        listing.setListingStatus(dto.getListingStatus());
         listing.setAgent(agent);
     }
 }

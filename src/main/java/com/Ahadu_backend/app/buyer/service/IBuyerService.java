@@ -7,7 +7,7 @@ import com.Ahadu_backend.app.buyer.dto.BuyerResponseDto;
 
 public interface IBuyerService {
     BuyerResponseDto createBuyer(BuyerRequestDto dto);
-
+    
     List<BuyerResponseDto> getAllBuyers();
 
     BuyerResponseDto getBuyerById(Long id);

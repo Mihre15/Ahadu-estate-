@@ -1,268 +1,421 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="light" lang="en"><head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Register | Ahadu Real Estate</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-secondary-fixed": "#00201d",
-                        "tertiary": "#1e1200",
-                        "surface-container": "#f0edef",
-                        "on-error": "#ffffff",
-                        "on-primary": "#ffffff",
-                        "on-tertiary-fixed": "#271902",
-                        "surface-container-high": "#eae7e9",
-                        "primary": "#091426",
-                        "primary-fixed": "#d8e3fb",
-                        "secondary-container": "#86f2e4",
-                        "surface-container-highest": "#e4e2e3",
-                        "surface-bright": "#fbf8fa",
-                        "surface-variant": "#e4e2e3",
-                        "on-background": "#1b1b1d",
-                        "tertiary-fixed-dim": "#ddc39d",
-                        "error": "#ba1a1a",
-                        "on-secondary-container": "#006f66",
-                        "on-secondary-fixed-variant": "#005049",
-                        "outline": "#75777d",
-                        "surface-container-lowest": "#ffffff",
-                        "secondary-fixed": "#89f5e7",
-                        "on-primary-fixed": "#111c2d",
-                        "inverse-primary": "#bcc7de",
-                        "on-tertiary": "#ffffff",
-                        "surface-dim": "#dcd9db",
-                        "tertiary-fixed": "#fadfb8",
-                        "on-tertiary-container": "#a38c6a",
-                        "surface": "#fbf8fa",
-                        "on-primary-fixed-variant": "#3c475a",
-                        "secondary-fixed-dim": "#6bd8cb",
-                        "on-surface-variant": "#45474c",
-                        "inverse-on-surface": "#f3f0f2",
-                        "secondary": "#006a61",
-                        "surface-tint": "#545f73",
-                        "tertiary-container": "#35260c",
-                        "on-secondary": "#ffffff",
-                        "on-error-container": "#93000a",
-                        "on-surface": "#1b1b1d",
-                        "background": "#fbf8fa",
-                        "primary-fixed-dim": "#bcc7de",
-                        "surface-container-low": "#f5f3f4",
-                        "outline-variant": "#c5c6cd",
-                        "inverse-surface": "#303032",
-                        "on-primary-container": "#8590a6",
-                        "primary-container": "#1e293b",
-                        "error-container": "#ffdad6",
-                        "on-tertiary-fixed-variant": "#564427"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1.5rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "container-max": "1280px",
-                        "base": "4px",
-                        "gutter": "24px",
-                        "margin-desktop": "40px",
-                        "section-gap": "80px",
-                        "margin-mobile": "16px"
-                    },
-                    "fontFamily": {
-                        "body-md": ["Inter"],
-                        "headline-md": ["Montserrat"],
-                        "label-md": ["Inter"],
-                        "display-lg-mobile": ["Montserrat"],
-                        "headline-sm": ["Montserrat"],
-                        "label-sm": ["Inter"],
-                        "display-lg": ["Montserrat"],
-                        "body-lg": ["Inter"]
-                    },
-                    "fontSize": {
-                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
-                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
-                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
-                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
-                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
-                    }
-                },
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#00201d",
+              tertiary: "#1e1200",
+              "surface-container": "#f0edef",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#271902",
+              "surface-container-high": "#eae7e9",
+              primary: "#091426",
+              "primary-fixed": "#d8e3fb",
+              "secondary-container": "#86f2e4",
+              "surface-container-highest": "#e4e2e3",
+              "surface-bright": "#fbf8fa",
+              "surface-variant": "#e4e2e3",
+              "on-background": "#1b1b1d",
+              "tertiary-fixed-dim": "#ddc39d",
+              error: "#ba1a1a",
+              "on-secondary-container": "#006f66",
+              "on-secondary-fixed-variant": "#005049",
+              outline: "#75777d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#89f5e7",
+              "on-primary-fixed": "#111c2d",
+              "inverse-primary": "#bcc7de",
+              "on-tertiary": "#ffffff",
+              "surface-dim": "#dcd9db",
+              "tertiary-fixed": "#fadfb8",
+              "on-tertiary-container": "#a38c6a",
+              surface: "#fbf8fa",
+              "on-primary-fixed-variant": "#3c475a",
+              "secondary-fixed-dim": "#6bd8cb",
+              "on-surface-variant": "#45474c",
+              "inverse-on-surface": "#f3f0f2",
+              secondary: "#006a61",
+              "surface-tint": "#545f73",
+              "tertiary-container": "#35260c",
+              "on-secondary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-surface": "#1b1b1d",
+              background: "#fbf8fa",
+              "primary-fixed-dim": "#bcc7de",
+              "surface-container-low": "#f5f3f4",
+              "outline-variant": "#c5c6cd",
+              "inverse-surface": "#303032",
+              "on-primary-container": "#8590a6",
+              "primary-container": "#1e293b",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#564427",
             },
-        }
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1.5rem",
+              full: "9999px",
+            },
+            spacing: {
+              "container-max": "1280px",
+              base: "4px",
+              gutter: "24px",
+              "margin-desktop": "40px",
+              "section-gap": "80px",
+              "margin-mobile": "16px",
+            },
+            fontFamily: {
+              "body-md": ["Inter"],
+              "headline-md": ["Montserrat"],
+              "label-md": ["Inter"],
+              "display-lg-mobile": ["Montserrat"],
+              "headline-sm": ["Montserrat"],
+              "label-sm": ["Inter"],
+              "display-lg": ["Montserrat"],
+              "body-lg": ["Inter"],
+            },
+            fontSize: {
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "display-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-sm": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+              "label-sm": ["12px", { lineHeight: "1", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+            },
+          },
+        },
+      };
     </script>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .registration-card {
-            box-shadow: 0px 4px 20px rgba(30, 41, 59, 0.05);
-        }
-        .form-input-focus:focus {
-            outline: none;
-            border-color: #0d9488;
-            box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.1);
-        }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .registration-card {
+        box-shadow: 0px 4px 20px rgba(30, 41, 59, 0.05);
+      }
+      .form-input-focus:focus {
+        outline: none;
+        border-color: #0d9488;
+        box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.1);
+      }
     </style>
-</head>
-<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
-<!-- Top Navigation Bar -->
-<header th:replace="~{fragments :: navbar}"></header>
-<!-- Main Content Area -->
-<main class="flex-grow flex items-center justify-center py-section-gap px-margin-mobile">
-    <!-- Visual Background Element -->
-    <div class="fixed inset-0 pointer-events-none opacity-5 overflow-hidden z-0">
-        <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-secondary blur-3xl"></div>
-        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-primary-fixed blur-3xl"></div>
-    </div>
-    <div class="w-full max-w-md z-10">
+  </head>
+  <body
+    class="bg-background text-on-background min-h-screen flex flex-col font-body-md"
+  >
+    <!-- Top Navigation Bar -->
+    <!-- <header th:replace="~{fragments :: navbar}"></header> -->
+    <!-- Main Content Area -->
+    <main
+      class="flex-grow flex items-center justify-center py-section-gap px-margin-mobile"
+    >
+      <!-- Visual Background Element -->
+      <div
+        class="fixed inset-0 pointer-events-none opacity-5 overflow-hidden z-0"
+      >
+        <div
+          class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-secondary blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-primary-fixed blur-3xl"
+        ></div>
+      </div>
+      <div class="w-full max-w-md z-10">
         <!-- Registration Card -->
-        <div class="registration-card bg-surface-container-lowest p-8 md:p-10 rounded-2xl border border-outline-variant/30">
-            <div class="text-center mb-8">
-                <h1 class="font-headline-md text-headline-md text-primary mb-2">Join Ahadu Real Estate</h1>
-                <p class="font-body-md text-on-surface-variant">Create an account to start browsing and listing properties</p>
+        <div
+          class="registration-card bg-surface-container-lowest p-8 md:p-10 rounded-2xl border border-outline-variant/30"
+        >
+          <div class="text-center mb-8">
+            <h1 class="font-headline-md text-headline-md text-primary mb-2">
+              Join Ahadu Real Estate
+            </h1>
+            <p class="font-body-md text-on-surface-variant">
+              Create an account to start browsing and listing properties
+            </p>
+          </div>
+          <!-- Alert Message -->
+          <div
+            class="hidden p-4 rounded-xl mb-6 font-label-md text-sm transition-all duration-300"
+            id="message"
+          ></div>
+          <form class="space-y-6" id="registrationForm">
+            <!-- Full Name Field -->
+            <div class="space-y-2">
+              <label
+                class="font-label-md text-label-md text-on-surface-variant block"
+                for="name"
+                >Full Name</label
+              >
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant"
+                  >person</span
+                >
+                <input
+                  class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus"
+                  id="name"
+                  name="name"
+                  placeholder="John Doe"
+                  required=""
+                  type="text"
+                />
+              </div>
             </div>
-            <!-- Alert Message -->
-            <div class="hidden p-4 rounded-xl mb-6 font-label-md text-sm transition-all duration-300" id="message"></div>
-            <form class="space-y-6" id="registrationForm">
-                <!-- Full Name Field -->
-                <div class="space-y-2">
-                    <label class="font-label-md text-label-md text-on-surface-variant block" for="name">Full Name</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">person</span>
-                        <input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus" id="name" name="name" placeholder="John Doe" required="" type="text"/>
-                    </div>
-                </div>
-                <!-- Phone Number Field -->
-                <div class="space-y-2">
-                    <label class="font-label-md text-label-md text-on-surface-variant block" for="phone">Phone Number</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">call</span>
-                        <input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus" id="phone" name="phone" placeholder="+251..." required="" type="tel"/>
-                    </div>
-                </div>
-                <!-- Email Field -->
-                <div class="space-y-2">
-                    <label class="font-label-md text-label-md text-on-surface-variant block" for="email">Email Address</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">mail</span>
-                        <input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
-                    </div>
-                </div>
-                <!-- Password Field -->
-                <div class="space-y-2">
-                    <label class="font-label-md text-label-md text-on-surface-variant block" for="password">Password</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">lock</span>
-                        <input class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus" id="password" name="password" placeholder="••••••••" required="" type="password"/>
-                    </div>
-                </div>
-                <!-- Role Selector -->
-                <div class="space-y-2">
-                    <label class="font-label-md text-label-md text-on-surface-variant block" for="role">I am a...</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">person_search</span>
-                        <select class="w-full pl-10 pr-10 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface appearance-none transition-all form-input-focus" id="role" name="role" required="">
-                            <option value="BUYER">Buyer</option>
-                            <option value="AGENT">Agent</option>
-                        </select>
-                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none">expand_more</span>
-                    </div>
-                </div>
-                <!-- Submit Button -->
-                <button class="w-full py-4 bg-secondary text-on-primary font-bold text-body-md rounded-2xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2" id="submitBtn" type="submit">
-                    Create Account
-                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-                </button>
-            </form>
-            <div class="mt-8 pt-8 border-t border-outline-variant/30 text-center">
-                <p class="font-body-md text-on-surface-variant">
-                    Already have an account?
-                    <a class="text-secondary font-semibold hover:underline" href="/login">Login</a>
-                </p>
+            <!-- Phone Number Field -->
+            <div class="space-y-2">
+              <label
+                class="font-label-md text-label-md text-on-surface-variant block"
+                for="phone"
+                >Phone Number</label
+              >
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant"
+                  >call</span
+                >
+                <input
+                  class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus"
+                  id="phone"
+                  name="phone"
+                  placeholder="+251..."
+                  required=""
+                  type="tel"
+                />
+              </div>
             </div>
+            <!-- Email Field -->
+            <div class="space-y-2">
+              <label
+                class="font-label-md text-label-md text-on-surface-variant block"
+                for="email"
+                >Email Address</label
+              >
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant"
+                  >mail</span
+                >
+                <input
+                  class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus"
+                  id="email"
+                  name="email"
+                  placeholder="name@example.com"
+                  required=""
+                  type="email"
+                />
+              </div>
+            </div>
+            <!-- Password Field -->
+            <div class="space-y-2">
+              <label
+                class="font-label-md text-label-md text-on-surface-variant block"
+                for="password"
+                >Password</label
+              >
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant"
+                  >lock</span
+                >
+                <input
+                  class="w-full pl-10 pr-4 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface placeholder:text-outline-variant transition-all form-input-focus"
+                  id="password"
+                  name="password"
+                  placeholder="••••••••"
+                  required=""
+                  type="password"
+                />
+              </div>
+            </div>
+            <!-- Role Selector -->
+            <div class="space-y-2">
+              <label
+                class="font-label-md text-label-md text-on-surface-variant block"
+                for="role"
+                >I am a...</label
+              >
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant"
+                  >person_search</span
+                >
+                <select
+                  class="w-full pl-10 pr-10 py-3 bg-surface-container-low border-transparent rounded-xl font-body-md text-on-surface appearance-none transition-all form-input-focus"
+                  id="role"
+                  name="role"
+                  required=""
+                >
+                  <option value="BUYER">Buyer</option>
+                  <option value="AGENT">Agent</option>
+                </select>
+                <span
+                  class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none"
+                  >expand_more</span
+                >
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <button
+              class="w-full py-4 bg-secondary text-on-primary font-bold text-body-md rounded-2xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              id="submitBtn"
+              type="submit"
+            >
+              Create Account
+              <span class="material-symbols-outlined text-[20px]"
+                >arrow_forward</span
+              >
+            </button>
+          </form>
+          <div class="mt-8 pt-8 border-t border-outline-variant/30 text-center">
+            <p class="font-body-md text-on-surface-variant">
+              Already have an account?
+              <a
+                class="text-secondary font-semibold hover:underline"
+                href="/login"
+                >Login</a
+              >
+            </p>
+          </div>
         </div>
-    </div>
-</main>
-<!-- Footer -->
-<footer th:replace="~{fragments :: footer}"></footer>
-<script>
-    const form = document.getElementById('registrationForm');
-    const messageDiv = document.getElementById('message');
-    const submitBtn = document.getElementById('submitBtn');
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer th:replace="~{fragments :: footer}"></footer>
+    <script>
+      const form = document.getElementById("registrationForm");
+      const messageDiv = document.getElementById("message");
+      const submitBtn = document.getElementById("submitBtn");
 
-    form.addEventListener('submit', async (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         // Reset state
-        messageDiv.classList.add('hidden');
-        messageDiv.innerHTML = '';
+        messageDiv.classList.add("hidden");
+        messageDiv.innerHTML = "";
         submitBtn.disabled = true;
-        submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+        submitBtn.classList.add("opacity-70", "cursor-not-allowed");
         const originalBtnText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+        submitBtn.innerHTML =
+          '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch('/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
+          const response = await fetch("/auth/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
 
-            const result = await response.json();
+          const result = await response.json();
 
-            if (response.ok) {
-                // Handle Success
-                messageDiv.classList.remove('hidden', 'bg-error-container', 'text-on-error-container');
-                messageDiv.classList.add('bg-secondary-container', 'text-on-secondary-container');
-                messageDiv.innerHTML = `
+          if (response.ok) {
+            // Handle Success
+            messageDiv.classList.remove(
+              "hidden",
+              "bg-error-container",
+              "text-on-error-container",
+            );
+            messageDiv.classList.add(
+              "bg-secondary-container",
+              "text-on-secondary-container",
+            );
+            messageDiv.innerHTML = `
                         <div class="flex items-center gap-3">
                             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
                             <span>Registration successful! Redirecting to login...</span>
                         </div>
                     `;
-                form.reset();
+            form.reset();
 
-                // Redirect after 2 seconds
-                setTimeout(() => {
-                    window.location.href = '/login';
-                }, 2000);
-
-            } else {
-                // Handle Detailed Error
-                throw new Error(result.message || 'Registration failed. Please check your details and try again.');
-            }
+            // Redirect after 2 seconds
+            setTimeout(() => {
+              window.location.href = "/login";
+            }, 2000);
+          } else {
+            // Handle Detailed Error
+            throw new Error(
+              result.message ||
+                "Registration failed. Please check your details and try again.",
+            );
+          }
         } catch (error) {
-            // Handle Generic/Network Error
-            messageDiv.classList.remove('hidden', 'bg-secondary-container', 'text-on-secondary-container');
-            messageDiv.classList.add('bg-error-container', 'text-on-error-container');
-            messageDiv.innerHTML = `
+          // Handle Generic/Network Error
+          messageDiv.classList.remove(
+            "hidden",
+            "bg-secondary-container",
+            "text-on-secondary-container",
+          );
+          messageDiv.classList.add(
+            "bg-error-container",
+            "text-on-error-container",
+          );
+          messageDiv.innerHTML = `
                     <div class="flex items-center gap-3">
                         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">error</span>
                         <span>${error.message}</span>
                     </div>
                 `;
 
-            // Re-enable button
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
-            submitBtn.innerHTML = originalBtnText;
+          // Re-enable button
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+          submitBtn.innerHTML = originalBtnText;
         }
-    });
-</script>
-</body></html>
+      });
+    </script>
+  </body>
+</html>

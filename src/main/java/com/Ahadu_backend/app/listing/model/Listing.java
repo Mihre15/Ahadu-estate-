@@ -24,6 +24,9 @@ public class Listing {
     private String image;
     private Integer bathrooms;
     private Double area;
+    private String propertyType;
+    private String listingStatus;
+
     @ManyToOne
     @JoinColumn(name = "agent_id")
     private Agent agent;

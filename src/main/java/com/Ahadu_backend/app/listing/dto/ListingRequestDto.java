@@ -16,4 +16,6 @@ public class ListingRequestDto {
     private Double area;
     private Long agentId;
     private String image;
+    private String propertyType;
+    private String listingStatus;
 }
