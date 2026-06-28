@@ -1,0 +1,72 @@
+name: Spring Boot CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: ahadu_db
+          POSTGRES_USER: ahadu_user
+          POSTGRES_PASSWORD: test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U ahadu_user -d ahadu_db"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+      elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.17.10
+        env:
+          discovery.type: single-node
+          xpack.security.enabled: false
+          ES_JAVA_OPTS: -Xms512m -Xmx512m
+        ports:
+          - 9200:9200
+        options: >-
+          --health-cmd="curl -f http://localhost:9200/_cluster/health || exit 1"
+          --health-interval=15s
+          --health-timeout=10s
+          --health-retries=10
+
+    env:
+      DB_URL: jdbc:postgresql://localhost:5432/ahadu_db
+      DB_USERNAME: ahadu_user
+      DB_PASSWORD: test_password
+      ELASTICSEARCH_URIS: http://localhost:9200
+      JWT_SECRET: test_jwt_secret_for_ci_only_replace_in_real_env
+      JWT_EXPIRATION: 86400000
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: maven
+
+      - name: Make Maven wrapper executable
+        run: chmod +x mvnw
+
+      - name: Build and test
+        run: ./mvnw -B clean verify
