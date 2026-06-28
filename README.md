@@ -1,6 +1,7 @@
 # Ahadu Real Estate
 
-[https://github.com/Mihre15/Ahadu-estate/actions/workflows/ci.yml/badge.svg](https://github.com/Mihre15/Ahadu-estate-/edit/main/README.md)
+![CI Status](https://github.com/Mihre15/Ahadu-estate/actions/workflows/ci.yml/badge.svg)
+https://github.com/Mihre15/Ahadu-estate-/edit/main/README.md
 
 Ahadu Real Estate is a Spring Boot web application for managing real estate listings between two main users: agents and buyers. Agents can publish properties, update or delete their own listings, and see buyers who requested a listing. Buyers can browse properties, request listings they are interested in, and manage their profile.
 
