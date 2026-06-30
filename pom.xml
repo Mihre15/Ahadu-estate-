@@ -138,7 +138,7 @@
                         <goal>prepare-agent</goal>
                     </goals>
                 </execution>
-
+                
                 <!-- Generates the report -->
                 <execution>
                     <id>report</id>

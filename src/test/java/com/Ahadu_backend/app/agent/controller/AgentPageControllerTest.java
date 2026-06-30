@@ -83,7 +83,8 @@ class AgentPageControllerTest {
         when(buyerRepository.findDistinctByRequestedListingsId(12L)).thenReturn(List.of(buyer));
         ExtendedModelMap model = new ExtendedModelMap();
 
-        String view = controller.agentListingDetails(12L, new TestingAuthenticationToken("agent@example.com", "password"), model);
+        String view = controller.agentListingDetails(12L,
+                new TestingAuthenticationToken("agent@example.com", "password"), model);
 
         assertThat(view).isEqualTo("agentListingDetails");
         assertThat(model.get("listing")).isSameAs(listing);
@@ -100,8 +101,7 @@ class AgentPageControllerTest {
                 new TestingAuthenticationToken("agent@example.com", "password"),
                 dto,
                 image,
-                redirectAttributes
-        );
+                redirectAttributes);
 
         assertThat(view).isEqualTo("redirect:/agent/dashboard");
         assertThat(redirectAttributes.getFlashAttributes().get("success")).isEqualTo("Listing published successfully.");
@@ -123,8 +123,7 @@ class AgentPageControllerTest {
         String view = controller.updateAgentProfile(
                 new TestingAuthenticationToken("agent@example.com", "password"),
                 form,
-                redirectAttributes
-        );
+                redirectAttributes);
 
         ArgumentCaptor<Agent> agentCaptor = ArgumentCaptor.forClass(Agent.class);
         verify(agentRepository).save(agentCaptor.capture());
@@ -141,8 +140,7 @@ class AgentPageControllerTest {
         String view = controller.deleteListing(
                 15L,
                 new TestingAuthenticationToken("agent@example.com", "password"),
-                redirectAttributes
-        );
+                redirectAttributes);
 
         assertThat(view).isEqualTo("redirect:/agent/dashboard");
         assertThat(redirectAttributes.getFlashAttributes().get("success")).isEqualTo("Listing deleted successfully.");
@@ -165,4 +163,3 @@ class AgentPageControllerTest {
         return agent;
     }
 }
-

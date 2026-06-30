@@ -6,6 +6,7 @@ import com.Ahadu_backend.app.auth.model.User;
 import com.Ahadu_backend.app.buyer.model.Buyer;
 import com.Ahadu_backend.app.core.service.FileStorageService;
 import com.Ahadu_backend.app.listing.dto.ListingRequestDto;
+import com.Ahadu_backend.app.listing.dto.ListingResponseDto;
 import com.Ahadu_backend.app.listing.mapper.ListingMapper;
 import com.Ahadu_backend.app.listing.model.Listing;
 import com.Ahadu_backend.app.listing.search.ListingSearchService;
@@ -26,6 +27,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -47,18 +49,21 @@ class ListingServiceTest {
     @Mock
     private ListingSearchService listingSearchService;
 
+    @Mock
+    private ListingMapper listingMapper;
+
     private ListingService listingService;
 
     @BeforeEach
     void setUp() {
+
         listingService = new ListingService(
                 listingRepository,
                 agentRepository,
                 buyerRepository,
                 new ListingMapper(),
                 fileStorageService,
-                listingSearchService
-        );
+                listingSearchService);
     }
 
     @Test
@@ -168,6 +173,18 @@ class ListingServiceTest {
         verify(listingSearchService).indexListing(any(Listing.class));
     }
 
+    @Test
+    void searchListingEntitiesDelegatesToSearchService() {
+        Listing listing = listing(1L, agent("a@a.com", 1L));
+
+        when(listingSearchService.searchListings("house", "Apartment"))
+                .thenReturn(List.of(listing));
+
+        var result = listingService.searchListingEntities("house", "Apartment");
+
+        assertThat(result).containsExactly(listing);
+    }
+
     private ListingRequestDto listingDto() {
         ListingRequestDto dto = new ListingRequestDto();
         dto.setTitle("Sunny apartment");
@@ -204,6 +221,3 @@ class ListingServiceTest {
         return listing;
     }
 }
-
-
-

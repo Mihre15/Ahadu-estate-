@@ -33,10 +33,6 @@ public class Buyer {
     private User user;
 
     @ManyToMany
-    @JoinTable(
-            name = "buyer_requested_listings",
-            joinColumns = @JoinColumn(name = "buyer_id"),
-            inverseJoinColumns = @JoinColumn(name = "listing_id")
-    )
+    @JoinTable(name = "buyer_requested_listings", joinColumns = @JoinColumn(name = "buyer_id"), inverseJoinColumns = @JoinColumn(name = "listing_id"))
     private Set<Listing> requestedListings = new HashSet<>();
 }
